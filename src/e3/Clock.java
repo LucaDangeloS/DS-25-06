@@ -1,87 +1,147 @@
 package e3;
 
+import java.time.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Clock {
-    /**
-     * Creates a Clock instance parsing a String .
-     * param s The string representing the hour in 24 h format (17:25:15) or in
-     *
-    12 h format (05:25:15 PM ).
-     * throws IllegalArgumentException if the string is not a valid hour .
-     */
-    public Clock ( String s ) { /* ... */ }
-    /**
-     * Creates a clock given the values in 24 h format .
-     * param hours Hours in 24 h format .
-     * param minutes Minutes .
-     * param seconds Seconds .
-     * throws IllegalArgumentException if the values do not represent a valid
-     * hour .
-     */
-    public Clock ( int hours , int minutes , int seconds ) { /* ... */ }
-    /**
-     * Creates a clock given the values in 12 h format . Period is a enumeration
-     * located inside the Clock class with two values : AM and PM .
-     * param hours Hours in 12 h format .
-     * param minutes Minutes .
-     * param seconds Seconds .
-     * param period Period used by the Clock ( represented by an enum ).
-     * throws IllegalArgumentException if the values do not represent a valid
-     * hour .
-     */
-    public Clock ( int hours , int minutes , int seconds , Period period ) { /* ... */ }
-    /**
-     * Returns the hours of the clock in 24 h format
-     * @return the hours in 24 h format
-     */
-    public int getHours24 () { /* ... */ }
-    /**
-     * Returns the hours of the clock in 12 h format
-     * @return the hours in 12 h format
-     */
-    public int getHours12 () { /* ... */ }
-    /**
-     * Returns the minutes of the clock
-     * @return the minutes
-     */
-    public int getMinutes () { /* ... */ }
-    /**
-     * Returns the seconds of the clock .
-     * @return the seconds .
-     */
-    public int getSeconds () { /* ... */ }
-    /**
-     * Returns the period of the day ( AM or PM ) that the clock is representing
-     * @return An instance of the Clock . Period enum depending if the time is
-     * before noon ( AM ) or after noon ( PM ).
-     */
-    public Period getPeriod () { /* ... */ }
-    /**
-     * Prints a String repr esentat ion of the clock in 24 h format .
-     * @return An string in 24 h format
-     * @see String . format function to format integers with leading zeroes
-     */
-    public String printHour24 () { /* ... */ }
-    /**
-     * Prints a String repr esentat ion of the clock in 12 h format .
-     * @return An string in 12 h format
-     * @see String . format function to format integers with leading zeroes
-     */
-    public String printHour12 () { /* ... */ }
-    /**
-     * Performs the equality tests of the current clock with another clock
-     * passed as a parameter . Two clock are equal if they represent the same
-     * instant regardless of being in 12 h or 24 h format .
-     * @param o The clock to be compared with the current clock .
-     * @return true if the clocks are equals , false otherwise .
-     */
+    private int hours;
+    private int minutes;
+    private int seconds;
+    public enum Period {AM,PM}
+    Period period;
+
+    //constructor de string
+    public Clock ( String s ) {
+
+        Pattern TwentyFour_format = Pattern.compile("^[0-1][0-9]:[0-5][0-9]:[0-5][0-9] (AM|PM)$", Pattern.CASE_INSENSITIVE); //regex para formato 24h
+        Pattern Twelve_format = Pattern.compile("^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$"); //regex para formato 12h
+        Matcher match_twentyFour = TwentyFour_format.matcher(s); //match del regex 24h
+        Matcher match_twelve = Twelve_format.matcher(s); //match del regex 12h
+        boolean twentyFour_f = match_twentyFour.find() , twelve_f = match_twelve.find();//variables booleanas para los matches correspondientes
+        int hours, min, sec;
+        Period t_period = null;
+
+        if (twentyFour_f || twelve_f) {
+            hours = Integer.parseInt(s.substring(0,2)); //horas
+            min = Integer.parseInt(s.substring(3,5)); //minutos
+            sec = Integer.parseInt(s.substring(6,8)); //segundos
+
+            if (twentyFour_f) t_period = Period.valueOf(s.substring(s.length()-2)); //AM o PM
+
+        } else throw new IllegalArgumentException("Valores ilegales");
+
+        if (twentyFour_f) {
+            if ((hours <= 12 && hours >= 0)) { //solo es valido de 00:00:00 AM a 11:59:59 PM
+                this.hours = hours;
+                this.minutes = min;
+                this.seconds = sec;
+                this.period = t_period;
+            } else throw new IllegalArgumentException("Valores ilegales");
+        } else if (twelve_f) {
+            if (hours < 24 && hours >= 0) {//solo es valido de 00:00:00 AM a 23:59:59 PM
+                this.hours = hours % 12;
+                this.minutes = min;
+                this.seconds = sec;
+                if (hours > 12) this.period = Period.PM;
+                else this.period = Period.PM;
+            } else throw new IllegalArgumentException("Valores ilegales");
+        } else throw new IllegalArgumentException("Valores ilegales");
+    }
+    //constructor con numeros en formato 24h
+    public Clock ( int hours , int minutes , int seconds ) {
+        if ((hours < 0 || minutes < 0 || seconds < 0) ||
+                (hours > 23 || minutes > 59 || seconds > 59)) throw new IllegalArgumentException("Valores ilegales");//comprobacion de valores válidos
+
+        if (hours > 12) {
+            this.hours = hours - 12; //si la hora dada es mayor que 12 es PM
+            this.period = Period.PM;
+        } else {
+            this.hours = hours;
+            this.period = Period.AM;
+        }
+
+        this.minutes = minutes;
+        this.seconds = seconds;
+    }
+    //constructor con numeros en formato 12h
+    public Clock ( int hours , int minutes , int seconds , Period period ) {
+        if ((hours < 0 || minutes < 0 || seconds < 0) ||
+                (hours > 12 || minutes > 59 || seconds > 59) ||
+                (period != Period.AM && period != Period.PM) ||
+                (hours == 12 && period == Period.PM)) throw new IllegalArgumentException("Valores ilegales");//comprobacion de valores válidos
+                // se añade la condicion de que la hora 12:00:00 PM no existe.
+
+        this.hours = hours;
+        this.period = period;
+        this.minutes = minutes;
+        this.seconds = seconds;
+    }
+
+    public int getHours24 () {
+        return this.hours + (this.period == Period.PM ? 12 : 0);
+    }
+
+    public int getHours12 () {
+        return this.hours > 12 ? this.hours % 12 : this.hours;
+    }
+
+    public int getMinutes () {
+        return this.minutes;
+    }
+
+    public int getSeconds () {
+        return this.seconds;
+    }
+
+    public Period getPeriod () {
+        return this.period;
+    }
+
+    public String printHour24 () {
+        String h = String.format("%02d",this.hours + (this.period == Period.PM ? 12 : 0));
+        String m = String.format("%02d",this.minutes);
+        String s = String.format("%02d",this.seconds);
+
+        return h+":"+m+":"+s;
+    }
+
+    public String printHour12 () {
+        String h = String.format("%02d",this.hours > 12 ? this.hours % 12 : this.hours);
+        String m = String.format("%02d",this.minutes);
+        String s = String.format("%02d",this.seconds);
+        String period = this.period.toString();
+
+        return h+":"+m+":"+s+" "+period;
+    }
+
     @Override
-    public boolean equals ( Object o ) { /* ... */ }
-    /**
-     * Returns a integer that is a hash code re presenta tion of the clock using
-     * the " hash 31" algorithm .
-     * Clocks that are equals must have the same hash code .
-     * @return the hash code
-     */
+    public boolean equals ( Object o ) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (this.getClass() != o.getClass()) return false;
+        //
+        Clock clock = (Clock) o;
+
+        if (this.hours != clock.hours || this.seconds != clock.seconds ||
+                this.minutes != clock.minutes || this.period != clock.period) return false; //si cualquier valor del objeto es distinto
+                                                                                            //return false
+        else return true;
+    }
+
     @Override
-    public int hashCode () { /* ... */ }
+    public int hashCode () {
+        return (this.minutes + this.seconds + this.hours)*31 + this.period.hashCode();
+    }
+
+
+    public static void main(String[] args) {
+        Clock c = new Clock("13:10:00");
+        Clock d = new Clock(1,10,0, Period.PM);
+
+        System.out.println(c.printHour24());
+        System.out.println(c.printHour12());
+        System.out.println(d.printHour24());
+        System.out.println(d.printHour12());
+    }
 }
