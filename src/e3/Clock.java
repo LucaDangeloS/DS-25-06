@@ -38,7 +38,7 @@ public class Clock {
                 this.seconds = sec;
                 this.period = t_period;
             } else throw new IllegalArgumentException("Valores ilegales");
-        } else if (twelve_f) {
+        } else {
             if (hours < 24 && hours >= 0) {//solo es valido de 00:00:00 AM a 23:59:59 PM
                 this.hours = hours % 12;
                 this.minutes = min;
@@ -46,7 +46,7 @@ public class Clock {
                 if (hours > 12) this.period = Period.PM;
                 else this.period = Period.PM;
             } else throw new IllegalArgumentException("Valores ilegales");
-        } else throw new IllegalArgumentException("Valores ilegales");
+        }
     }
     //constructor con numeros en formato 24h
     public Clock ( int hours , int minutes , int seconds ) {
