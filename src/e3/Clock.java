@@ -132,12 +132,4 @@ public class Clock {
     public int hashCode () {
         return (this.minutes + this.seconds + this.hours)*31 + this.period.hashCode();
     }
-
-
-    public static void main(String[] args) {
-        Clock f = new Clock("24:00:00");
-
-        System.out.println(f.getHours24());
-        System.out.println(f.printHour12());
-    }
 }
