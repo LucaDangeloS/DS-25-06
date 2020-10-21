@@ -1,8 +1,8 @@
 package e4;
-
-import e3.Clock;
+import  e4.TrafficLight;
 
 public class TrafficJunction {
+
     /**
      * Creates a trafic junction with four traffic lights named north , south ,
      * east and west . The north traffic light has just started its green cycle .
@@ -45,10 +45,13 @@ public class TrafficJunction {
      */
     @Override
     public String toString () {
-
+        return "f";
     }
 
     public static void main(String[] args) {
-
+        TrafficLight tf = new TrafficLight(20, TrafficLight.Pos.NORTH, 0, TrafficLight.Colors.GREEN);
+        System.out.println(tf.getCounter());
+        tf.cycle();
+        System.out.println(tf.getCounter());
     }
 }
