@@ -1,6 +1,5 @@
 package e3;
 
-import java.time.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -124,10 +123,9 @@ public class Clock {
         //type cast de la clase Clock
         Clock clock = (Clock) o;
 
-        if (this.hours != clock.hours || this.seconds != clock.seconds ||
-                this.minutes != clock.minutes || this.period != clock.period) return false; //si cualquier valor del objeto es distinto
-                                                                                            //return false
-        else return true;
+        //return false
+        return this.hours == clock.hours && this.seconds == clock.seconds &&
+                this.minutes == clock.minutes && this.period == clock.period; //si cualquier valor del objeto es distinto
     }
 
     @Override

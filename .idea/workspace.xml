@@ -22,12 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f75bafe7-cad4-43a1-abf1-7d312044d824" name="Default Changelist" comment="e3 creado, hecho, pendiente de limpieza y algunas dudas que resolver...">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_10_20_11_27_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_10_20_11_27__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f75bafe7-cad4-43a1-abf1-7d312044d824" name="Default Changelist" comment="e3 terminado.">
       <change beforePath="$PROJECT_DIR$/src/e3/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/e3/Clock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/e3/ClockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/e3/ClockTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603226625995</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="e3 terminado.">
+      <created>1603275098807</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1603275098807</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +250,8 @@
     <MESSAGE value="e3 creado, pendiente de hacerlo." />
     <MESSAGE value="e3 creado, pendiente de hacerlo..." />
     <MESSAGE value="e3 creado, hecho, pendiente de limpieza y algunas dudas que resolver..." />
-    <option name="LAST_COMMIT_MESSAGE" value="e3 creado, hecho, pendiente de limpieza y algunas dudas que resolver..." />
+    <MESSAGE value="e3 terminado." />
+    <option name="LAST_COMMIT_MESSAGE" value="e3 terminado." />
   </component>
   <component name="WindowStateProjectService">
     <state x="697" y="378" width="588" height="357" key="#Notifications" timestamp="1602665532715">
@@ -286,22 +290,22 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="713" y="231" width="556" height="652" key="Github.UntrackedFilesDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1602665931434" />
-    <state width="1802" height="283" key="GridCell.Tab.0.bottom" timestamp="1603275076945">
+    <state width="1802" height="283" key="GridCell.Tab.0.bottom" timestamp="1603275128598">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="283" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603275076945" />
-    <state width="1802" height="283" key="GridCell.Tab.0.center" timestamp="1603275076945">
+    <state width="1802" height="283" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603275128598" />
+    <state width="1802" height="283" key="GridCell.Tab.0.center" timestamp="1603275128598">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="283" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603275076945" />
-    <state width="1802" height="283" key="GridCell.Tab.0.left" timestamp="1603275076945">
+    <state width="1802" height="283" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603275128598" />
+    <state width="1802" height="283" key="GridCell.Tab.0.left" timestamp="1603275128597">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="283" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603275076945" />
-    <state width="1802" height="283" key="GridCell.Tab.0.right" timestamp="1603275076945">
+    <state width="1802" height="283" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603275128597" />
+    <state width="1802" height="283" key="GridCell.Tab.0.right" timestamp="1603275128598">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="283" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603275076945" />
+    <state width="1802" height="283" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603275128598" />
     <state width="1802" height="228" key="GridCell.Tab.1.bottom" timestamp="1603274929174">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -322,10 +326,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1603273363897" />
-    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603226630155">
+    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603275100669">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1603226630155" />
+    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1603275100669" />
     <state x="668" y="450" width="646" height="236" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1602617477577">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -368,7 +372,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/e3/Clock.java</url>
-          <line>79</line>
+          <line>78</line>
           <properties class="e3.Clock" method="getHours24">
             <option name="EMULATED" value="true" />
           </properties>
