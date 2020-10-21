@@ -9,13 +9,13 @@ public class Clock {
     private int minutes;
     private int seconds;
     public enum Period {AM,PM}
-    Period period;
+    private Period period;
 
     //constructor de string
     public Clock ( String s ) {
 
-        Pattern TwentyFour_format = Pattern.compile("^[0-1][0-9]:[0-5][0-9]:[0-5][0-9] (AM|PM)$", Pattern.CASE_INSENSITIVE); //regex para formato 24h
-        Pattern Twelve_format = Pattern.compile("^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$"); //regex para formato 12h
+        Pattern Twelve_format = Pattern.compile("^[0-1][0-9]:[0-5][0-9]:[0-5][0-9] (AM|PM)$", Pattern.CASE_INSENSITIVE); //regex para formato 24h
+        Pattern TwentyFour_format = Pattern.compile("^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$"); //regex para formato 12h
         Matcher match_twentyFour = TwentyFour_format.matcher(s); //match del regex 24h
         Matcher match_twelve = Twelve_format.matcher(s); //match del regex 12h
         boolean twentyFour_f = match_twentyFour.find() , twelve_f = match_twelve.find();//variables booleanas para los matches correspondientes
@@ -27,11 +27,11 @@ public class Clock {
             min = Integer.parseInt(s.substring(3,5)); //minutos
             sec = Integer.parseInt(s.substring(6,8)); //segundos
 
-            if (twentyFour_f) t_period = Period.valueOf(s.substring(s.length()-2)); //AM o PM
+            if (twelve_f) t_period = Period.valueOf(s.substring(s.length()-2)); //AM o PM
 
         } else throw new IllegalArgumentException("Valores ilegales");
 
-        if (twentyFour_f) {
+        if (twelve_f) {
             if ((hours <= 12 && hours >= 0)) { //solo es valido de 00:00:00 AM a 11:59:59 PM
                 this.hours = hours;
                 this.minutes = min;
@@ -40,11 +40,11 @@ public class Clock {
             } else throw new IllegalArgumentException("Valores ilegales");
         } else {
             if (hours < 24 && hours >= 0) {//solo es valido de 00:00:00 AM a 23:59:59 PM
-                this.hours = hours % 12;
+                this.hours = (hours == 12 || hours == 0) ? 12 : hours % 12;
                 this.minutes = min;
                 this.seconds = sec;
-                if (hours > 12) this.period = Period.PM;
-                else this.period = Period.PM;
+                if (hours >= 12) this.period = Period.PM;
+                else this.period = Period.AM;
             } else throw new IllegalArgumentException("Valores ilegales");
         }
     }
@@ -67,9 +67,8 @@ public class Clock {
     //constructor con numeros en formato 12h
     public Clock ( int hours , int minutes , int seconds , Period period ) {
         if ((hours < 0 || minutes < 0 || seconds < 0) ||
-                (hours > 12 || minutes > 59 || seconds > 59) ||
-                (period != Period.AM && period != Period.PM) ||
-                (hours == 12 && period == Period.PM)) throw new IllegalArgumentException("Valores ilegales");//comprobacion de valores válidos
+                (hours >     12 || minutes > 59 || seconds > 59) ||
+                (period != Period.AM && period != Period.PM)) throw new IllegalArgumentException("Valores ilegales");//comprobacion de valores válidos
                 // se añade la condicion de que la hora 12:00:00 PM no existe.
 
         this.hours = hours;
@@ -79,11 +78,12 @@ public class Clock {
     }
 
     public int getHours24 () {
-        return this.hours + (this.period == Period.PM ? 12 : 0);
+        return ((this.hours < 12 && this.period == Period.AM) ? this.hours :
+                (this.hours <= 12 && this.period == Period.PM) ? this.hours % 12 + 12 : 0); //caso de que sea 12:XX:00 AM y 12:00:00 AM -> 00:00:00
     }
 
     public int getHours12 () {
-        return this.hours > 12 ? this.hours % 12 : this.hours;
+        return this.hours;
     }
 
     public int getMinutes () {
@@ -99,7 +99,8 @@ public class Clock {
     }
 
     public String printHour24 () {
-        String h = String.format("%02d",this.hours + (this.period == Period.PM ? 12 : 0));
+        String h = String.format("%02d",this.hours < 12 && this.period == Period.PM ? this.hours + 12 :
+                (this.hours == 12 && this.period == Period.AM ? 0 : this.hours));//caso de que sea 12:00:00 AM -> 00:00:00
         String m = String.format("%02d",this.minutes);
         String s = String.format("%02d",this.seconds);
 
@@ -120,7 +121,7 @@ public class Clock {
         if (this == o) return true;
         if (o == null) return false;
         if (this.getClass() != o.getClass()) return false;
-        //
+        //type cast de la clase Clock
         Clock clock = (Clock) o;
 
         if (this.hours != clock.hours || this.seconds != clock.seconds ||
@@ -136,12 +137,9 @@ public class Clock {
 
 
     public static void main(String[] args) {
-        Clock c = new Clock("13:10:00");
-        Clock d = new Clock(1,10,0, Period.PM);
+        Clock f = new Clock("24:00:00");
 
-        System.out.println(c.printHour24());
-        System.out.println(c.printHour12());
-        System.out.println(d.printHour24());
-        System.out.println(d.printHour12());
+        System.out.println(f.getHours24());
+        System.out.println(f.printHour12());
     }
 }

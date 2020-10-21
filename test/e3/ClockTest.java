@@ -35,6 +35,20 @@ class ClockTest {
         assertEquals( 0, c.getMinutes());
         assertEquals( 0, c.getSeconds());
         assertEquals(Clock.Period.AM, c.getPeriod());
+        //-------------------
+        c = new Clock("00:00:00");
+        assertEquals(12, c.getHours12());
+        assertEquals( 0,c.getHours24());
+        assertEquals( 0, c.getMinutes());
+        assertEquals( 0, c.getSeconds());
+        assertEquals(Clock.Period.AM, c.getPeriod());
+
+        c = new Clock("12:10:00 AM");
+        assertEquals(12, c.getHours12());
+        assertEquals( 0, c.getHours24());
+        assertEquals( 10, c.getMinutes());
+        assertEquals( 0, c.getSeconds());
+        assertEquals(Clock.Period.AM, c.getPeriod());
 
         assertThrows(IllegalArgumentException.class, () -> new Clock("Hola Mundo"));
         assertThrows(IllegalArgumentException.class, () -> new Clock("AB:CD:EF"));
@@ -64,6 +78,20 @@ class ClockTest {
         assertEquals( 0, c.getMinutes());
         assertEquals( 0, c.getSeconds());
         assertEquals(Clock.Period.AM, c.getPeriod());
+        //------------------
+        c = new Clock(12, 0, 0, Clock.Period.PM);
+        assertEquals(12, c.getHours12());
+        assertEquals( 12, c.getHours24());
+        assertEquals( 0, c.getMinutes());
+        assertEquals( 0, c.getSeconds());
+        assertEquals(Clock.Period.PM, c.getPeriod());
+
+        c = new Clock(12, 10, 0, Clock.Period.PM);
+        assertEquals(12, c.getHours12());
+        assertEquals( 12, c.getHours24());
+        assertEquals( 10, c.getMinutes());
+        assertEquals( 0, c.getSeconds());
+        assertEquals(Clock.Period.PM, c.getPeriod());
     }
 
     @Test
@@ -76,6 +104,12 @@ class ClockTest {
 
         c = new Clock(12, 0, 0, Clock.Period.AM);
         assertEquals("00:00:00", c.printHour24());
+        //-------------------------
+        c = new Clock(12, 0, 0, Clock.Period.PM);
+        assertEquals("12:00:00", c.printHour24());
+
+        c = new Clock(12, 10, 0, Clock.Period.PM);
+        assertEquals("12:10:00", c.printHour24());
     }
 
     @Test
@@ -88,6 +122,12 @@ class ClockTest {
 
         c = new Clock(12, 0, 0, Clock.Period.AM);
         assertEquals("12:00:00 AM", c.printHour12());
+        //----------------------
+        c = new Clock(12, 0, 0, Clock.Period.PM);
+        assertEquals("12:00:00 PM", c.printHour12());
+
+        c = new Clock(12, 10, 0, Clock.Period.PM);
+        assertEquals("12:10:00 PM", c.printHour12());
     }
 
     @Test
