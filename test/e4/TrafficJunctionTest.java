@@ -40,6 +40,16 @@ class TrafficJunctionTest {
         tj.timesGoesBy();
         assertEquals("[NORTH: RED][SOUTH: AMBER OFF 0][EAST: RED][WEST: RED]", tj.toString()); // A0
 
+        //----------------------------------------------
+        for (int i = 0; i <= 5; i++) tj.timesGoesBy();
+        assertEquals("[NORTH: RED][SOUTH: RED][EAST: GREEN 0][WEST: RED]", tj.toString()); // EAST GREEN
+        for (int i = 0; i <= 21; i++) tj.timesGoesBy();
+        assertEquals("[NORTH: RED][SOUTH: RED][EAST: RED][WEST: GREEN 0]", tj.toString()); // WEST GREEN
+        for (int i = 0; i <= 20; i++) tj.timesGoesBy();
+        tj.timesGoesBy();
+        assertEquals("[NORTH: GREEN 0][SOUTH: RED][EAST: RED][WEST: RED]", tj.toString()); // NORTH GREEN
+        //----------------------------------------------
+
         tj.amberJunction(true);
         assertEquals("[NORTH: AMBER ON][SOUTH: AMBER ON][EAST: AMBER ON][WEST: AMBER ON]", tj.toString()); // amber blinking (no time)
         for (int i = 1; i <= 10; i++) tj.timesGoesBy();

@@ -22,11 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f75bafe7-cad4-43a1-abf1-7d312044d824" name="Default Changelist" comment="e4 creado, pendiente de hacerlo.">
-      <change afterPath="$PROJECT_DIR$/src/e4/TrafficLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/e4/TrafficJunctionTest.java" afterDir="false" />
+    <list default="true" id="f75bafe7-cad4-43a1-abf1-7d312044d824" name="Default Changelist" comment="e4 terminado.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/e1/StringUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/e1/StringUtilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/e4/TrafficJunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/e4/TrafficJunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/e4/TrafficLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/e4/TrafficLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/e4/TrafficJunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/e4/TrafficJunctionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +79,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TrafficJunction">
+  <component name="RunManager" selected="JUnit.TrafficJunction">
     <configuration name="Clock" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="e3.Clock" />
       <module name="DS-25-06" />
@@ -168,11 +169,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TrafficJunction" type="JUnit" factoryName="JUnit">
+      <module name="DS-25-06" />
+      <useClassPathOnly />
+      <option name="PACKAGE_NAME" value="e4" />
+      <option name="MAIN_CLASS_NAME" value="e4.TrafficJunctionTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Clock" />
       <item itemvalue="Application.TrafficJunction" />
       <item itemvalue="Application.TrafficLight" />
       <item itemvalue="Application.StringUtilities" />
+      <item itemvalue="JUnit.TrafficJunction" />
       <item itemvalue="JUnit.ClockTest" />
       <item itemvalue="JUnit.StringUtilitiesTest" />
       <item itemvalue="JUnit.StringUtilitiesTest.generateRandomValidMix" />
@@ -262,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603283953818</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="e4 avanzando.">
+      <created>1603310083422</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1603310083422</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,7 +306,9 @@
     <MESSAGE value="e3 creado, hecho, pendiente de limpieza y algunas dudas que resolver..." />
     <MESSAGE value="e3 terminado." />
     <MESSAGE value="e4 creado, pendiente de hacerlo." />
-    <option name="LAST_COMMIT_MESSAGE" value="e4 creado, pendiente de hacerlo." />
+    <MESSAGE value="e4 avanzando." />
+    <MESSAGE value="e4 terminado." />
+    <option name="LAST_COMMIT_MESSAGE" value="e4 terminado." />
   </component>
   <component name="WindowStateProjectService">
     <state x="697" y="378" width="588" height="357" key="#Notifications" timestamp="1602665532715">
@@ -296,10 +319,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="591" y="197" width="800" height="719" key="#Plugins/72.27.1848.1053@72.27.1848.1053" timestamp="1603270721560" />
-    <state x="282" y="32" width="1084" height="1048" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603297130446">
+    <state x="385" y="27" width="1084" height="1053" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603394549180">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="282" y="32" width="1084" height="1048" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603297130446" />
+    <state x="385" y="27" width="1084" height="1053" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603394549180" />
     <state x="172" y="127" width="1648" height="853" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1603271525960">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -328,46 +351,46 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="713" y="231" width="556" height="652" key="Github.UntrackedFilesDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1602665931434" />
-    <state width="1802" height="283" key="GridCell.Tab.0.bottom" timestamp="1603310066888">
+    <state width="1802" height="256" key="GridCell.Tab.0.bottom" timestamp="1603407060647">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="283" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603310066888" />
-    <state width="1802" height="283" key="GridCell.Tab.0.center" timestamp="1603310066887">
+    <state width="1802" height="256" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603407060647" />
+    <state width="1802" height="256" key="GridCell.Tab.0.center" timestamp="1603407060647">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="283" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603310066887" />
-    <state width="1802" height="283" key="GridCell.Tab.0.left" timestamp="1603310066887">
+    <state width="1802" height="256" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603407060647" />
+    <state width="1802" height="256" key="GridCell.Tab.0.left" timestamp="1603407060646">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="283" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603310066887" />
-    <state width="1802" height="283" key="GridCell.Tab.0.right" timestamp="1603310066888">
+    <state width="1802" height="256" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603407060646" />
+    <state width="1802" height="256" key="GridCell.Tab.0.right" timestamp="1603407060647">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="283" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603310066888" />
-    <state width="1802" height="228" key="GridCell.Tab.1.bottom" timestamp="1603275187309">
+    <state width="1802" height="256" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603407060647" />
+    <state width="1802" height="382" key="GridCell.Tab.1.bottom" timestamp="1603405943599">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="228" key="GridCell.Tab.1.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603275187309" />
-    <state width="1802" height="228" key="GridCell.Tab.1.center" timestamp="1603275187309">
+    <state width="1802" height="382" key="GridCell.Tab.1.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603405943599" />
+    <state width="1802" height="382" key="GridCell.Tab.1.center" timestamp="1603405943598">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="228" key="GridCell.Tab.1.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603275187309" />
-    <state width="1802" height="228" key="GridCell.Tab.1.left" timestamp="1603275187309">
+    <state width="1802" height="382" key="GridCell.Tab.1.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603405943598" />
+    <state width="1802" height="382" key="GridCell.Tab.1.left" timestamp="1603405943598">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="228" key="GridCell.Tab.1.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603275187309" />
-    <state width="1802" height="228" key="GridCell.Tab.1.right" timestamp="1603275187309">
+    <state width="1802" height="382" key="GridCell.Tab.1.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603405943598" />
+    <state width="1802" height="382" key="GridCell.Tab.1.right" timestamp="1603405943598">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="228" key="GridCell.Tab.1.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603275187309" />
+    <state width="1802" height="382" key="GridCell.Tab.1.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603405943598" />
     <state x="485" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1603273363897">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1603273363897" />
-    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603283958530">
+    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603310087931">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1603283958530" />
+    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1603310087931" />
     <state x="668" y="450" width="646" height="236" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1602617477577">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -396,14 +419,14 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="828" y="311" width="325" height="492" key="refactoring.ChangeSignatureDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603300366295" />
-    <state x="660" y="252" key="run.anything.popup" timestamp="1603301024903">
+    <state x="660" y="252" key="run.anything.popup" timestamp="1603388012563">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="660" y="252" key="run.anything.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1603301024903" />
-    <state x="659" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1603224556885">
+    <state x="660" y="252" key="run.anything.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1603388012563" />
+    <state x="659" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1603403369270">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="659" y="259" width="672" height="678" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1603224556885" />
+    <state x="659" y="259" width="672" height="678" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1603403369270" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -419,6 +442,11 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/e4/TrafficJunctionTest.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

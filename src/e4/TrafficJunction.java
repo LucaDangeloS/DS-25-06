@@ -1,57 +1,82 @@
 package e4;
-import  e4.TrafficLight;
+import java.util.HashMap;
 
 public class TrafficJunction {
 
-    /**
-     * Creates a trafic junction with four traffic lights named north , south ,
-     * east and west . The north traffic light has just started its green cycle .
-     */
+    public enum Pos {
+        NORTH,
+        SOUTH,
+        EAST,
+        WEST;
+
+        private static final Pos[] list = Pos.values();
+
+        private static Pos FirstPos() { //returns NORTH
+            return list[0];
+        }
+
+        private static Pos getNextPos(int i) { //devuelve la siguiente posicion, y si es la ultima vuelve al principio
+            if (i >= list.length-1) return list[0];
+            else return list[i+1];
+        }
+    }
+
+    private TrafficLight north = new TrafficLight(Pos.NORTH, 0, TrafficLight.Colors.GREEN);
+    private TrafficLight south = new TrafficLight(Pos.SOUTH, 0, TrafficLight.Colors.RED);
+    private TrafficLight east = new TrafficLight(Pos.EAST, 0, TrafficLight.Colors.RED);
+    private TrafficLight west = new TrafficLight(Pos.WEST, 0, TrafficLight.Colors.RED);
+
+    HashMap<Pos, TrafficLight> Tfs = new HashMap<>();
+    //añadimos una correspondencia con un hashmap de cada posicion a una TrafficLight para poder enumerar todas facilmente sin ser "hardcodeado".
+
+
     public TrafficJunction () {
-
+        //Crea las entradas de los semáforos en el HashMap, usando como keys las posiciones {NORTH...}
+        Tfs.put(Pos.NORTH, north);
+        Tfs.put(Pos.SOUTH, south);
+        Tfs.put(Pos.EAST, east);
+        Tfs.put(Pos.WEST, west);
     }
-    /**
-     * Indicates that a second of time has passed , so the traffic light with
-     * the green or amber light should add 1 to its counter . If the counter
-     * passes its maximum value the color of the traffic light must change .
-     * If it changes to red then the following traffic light changes to green .
-     * The order is : north , south , east , west and then again north .
-     */
+
     public void timesGoesBy () {
+        Pos pos = Pos.FirstPos(), adv_pos = Pos.getNextPos(pos.ordinal());
+        boolean cycle_next = false;
+        int i;
+
+        for (i = Tfs.size(); i > 0; i--, pos = Pos.getNextPos(pos.ordinal())) { //recorre todos los semáforos
+            //recorre las posiciones ordenadamente y actualiza la correspondiente entrada de TrafficLight
+
+            //si el semáforo terminó su ciclo se almacena en varaibles la posicion del siguiente semáforo y un bool que indica que es para avanzar de rojo
+            if (Tfs.get(pos).reached_counter_limit())  {
+                cycle_next = true;
+                adv_pos = Pos.getNextPos(pos.ordinal());
+            }
+
+            //si hay que avanzar un semáforo de rojo a verde se cumplen las conficiones pasadas como parámetro al metodo cycle.
+            Tfs.get(pos).cycle(cycle_next && pos == adv_pos);
+        }
+        cycle_next = true;
+        //por ultimo para cubrir el caso de que termine el ciclo de todos lo semáforos se recorren todos,
+        //y si no se encuntra ninguno que no esté en rojo resetea el primer semáforo de TrafficJunction. Utilizando la variable cycle_next para guardar la comprobacion
+        for (i = Tfs.size(); i > 0; i--, pos = Pos.getNextPos(pos.ordinal()))
+            if (!Tfs.get(pos).is_red()) cycle_next = false;
+
+        if (cycle_next) Tfs.get(Pos.FirstPos()).cycle(true);
 
     }
-    /**
-     * If active is true all the traffic lights of the junction must change to
-     * blinking amber ( meaning a non - controlled junction ).
-     * If active is false it resets the traffic lights cycle and started again
-     * with north at green and the rest at red .
-     * param active true or false
-     */
+
     public void amberJunction ( boolean active ) {
+        Pos pos = Pos.FirstPos();
+        int i;
+
+        for (i = Tfs.size(); i > 0; i--, pos = Pos.getNextPos(pos.ordinal())) {//recorre todos los semáforos
+            Tfs.get(pos).blinkAmber(active); //sets active
+        }
 
     }
-    /**
-     * Returns a String with the state of the traffic lights .
-     * The format for each traffic light is the following :
-     * - For red colors : "[ name : RED ]"
-     * - For green colors : "[ name : GREEN counter ]"
-     * - For yellow colors with blink at OFF : "[ name : YELLOW OFF counter ]
-     * - For yellow colors with blink at ON : "[ name : YELLOW ON ]
-     * Examples :
-     * [ NORTH : GREEN 2][ SOUTH : RED ][ EAST : RED ][ WEST : RED ]
-     * [ NORTH : AMBER OFF 5][ SOUTH : RED ][ EAST : RED ][ WEST : RED ]
-     * [ NORTH : AMBER ON ][ SOUTH : AMBER ON ][ EAST : AMBER ON ][ WEST : AMBER ON ]
-     * @return String that represents the state of the traffic lights
-     */
+
     @Override
     public String toString () {
-        return "f";
-    }
-
-    public static void main(String[] args) {
-        TrafficLight tf = new TrafficLight(20, TrafficLight.Pos.NORTH, 0, TrafficLight.Colors.GREEN);
-        System.out.println(tf.getCounter());
-        tf.cycle();
-        System.out.println(tf.getCounter());
+        return north.toString()+south.toString()+east.toString()+west.toString();
     }
 }

@@ -47,8 +47,8 @@ public class StringUtilities {
         return sb.toString(); //Convertimos la instancia en string para el return
     }
 
-    public static void main(String[] args) {
-        String str = generateRandomValidMix("Bye","World");
-        System.out.println(str);
-    }
+//    public static void main(String[] args) {
+//        String str = generateRandomValidMix("Bye","World");
+//        System.out.println(str);
+//    }
 }
