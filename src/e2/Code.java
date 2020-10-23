@@ -4,8 +4,8 @@ package e2;
 public class Code {
 
 	public static boolean isKeypadValid(char[][] keypad) {
-		int i = 0,j, x, y, array_length = -1; //inicializacion de array_length en -1
-		StringBuffer sb = new StringBuffer(); //clase StringBuffer para montar un string con el array de strings
+		int i, j, x, y, array_length = -1; //inicializacion de array_length en -1
+		StringBuilder sb = new StringBuilder(); //clase StringBuffer para montar un string con el array de strings
 		String aux_string;
 		char guardado;
 
