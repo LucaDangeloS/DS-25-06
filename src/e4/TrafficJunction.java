@@ -21,16 +21,17 @@ public class TrafficJunction {
         }
     }
 
-    private TrafficLight north = new TrafficLight(Pos.NORTH, 0, TrafficLight.Colors.GREEN);
-    private TrafficLight south = new TrafficLight(Pos.SOUTH, 0, TrafficLight.Colors.RED);
-    private TrafficLight east = new TrafficLight(Pos.EAST, 0, TrafficLight.Colors.RED);
-    private TrafficLight west = new TrafficLight(Pos.WEST, 0, TrafficLight.Colors.RED);
-
     HashMap<Pos, TrafficLight> Tfs = new HashMap<>();
     //añadimos una correspondencia con un hashmap de cada posicion a una TrafficLight para poder enumerar todas facilmente sin ser "hardcodeado".
 
 
     public TrafficJunction () {
+        //crea las instancias de las clases TrafficLight
+        TrafficLight north = new TrafficLight(Pos.NORTH, 0, TrafficLight.Colors.GREEN);
+        TrafficLight south = new TrafficLight(Pos.SOUTH, 0, TrafficLight.Colors.RED);
+        TrafficLight east = new TrafficLight(Pos.EAST, 0, TrafficLight.Colors.RED);
+        TrafficLight west = new TrafficLight(Pos.WEST, 0, TrafficLight.Colors.RED);
+
         //Crea las entradas de los semáforos en el HashMap, usando como keys las posiciones {NORTH...}
         Tfs.put(Pos.NORTH, north);
         Tfs.put(Pos.SOUTH, south);
@@ -77,6 +78,13 @@ public class TrafficJunction {
 
     @Override
     public String toString () {
-        return north.toString()+south.toString()+east.toString()+west.toString();
+        //clase en la que se va a montar el string
+        StringBuilder ret = new StringBuilder();
+        Pos pos = Pos.FirstPos();
+
+        for (int i = Tfs.size(); i > 0; i--, pos = Pos.getNextPos(pos.ordinal())) ret.append(Tfs.get(pos).toString());
+        //recorre todas las entradas del HashMap y las concatena en una instancia de la clase StrinBuilder para el return.
+
+        return ret.toString().toString();
     }
 }
