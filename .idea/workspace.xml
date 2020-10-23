@@ -22,9 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f75bafe7-cad4-43a1-abf1-7d312044d824" name="Default Changelist" comment="e4 terminado.">
+    <list default="true" id="f75bafe7-cad4-43a1-abf1-7d312044d824" name="Default Changelist" comment="e4 terminado, instancias de clases movidas dentro del constructor.">
+      <change afterPath="$PROJECT_DIR$/src/e2/Code.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/e2/CodeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/e4/TrafficJunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/e4/TrafficJunction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,9 +77,16 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TrafficJunction">
+  <component name="RunManager" selected="JUnit.CodeTest">
     <configuration name="Clock" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="e3.Clock" />
+      <module name="DS-25-06" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Code" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="e2.Code" />
       <module name="DS-25-06" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -112,6 +120,18 @@
       <useClassPathOnly />
       <option name="PACKAGE_NAME" value="e3" />
       <option name="MAIN_CLASS_NAME" value="e3.ClockTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CodeTest" type="JUnit" factoryName="JUnit">
+      <module name="DS-25-06" />
+      <useClassPathOnly />
+      <option name="PACKAGE_NAME" value="e2" />
+      <option name="MAIN_CLASS_NAME" value="e2.CodeTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
@@ -179,12 +199,14 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Code" />
       <item itemvalue="Application.Clock" />
       <item itemvalue="Application.TrafficJunction" />
       <item itemvalue="Application.TrafficLight" />
       <item itemvalue="Application.StringUtilities" />
-      <item itemvalue="JUnit.TrafficJunction" />
+      <item itemvalue="JUnit.CodeTest" />
       <item itemvalue="JUnit.ClockTest" />
+      <item itemvalue="JUnit.TrafficJunction" />
       <item itemvalue="JUnit.StringUtilitiesTest" />
       <item itemvalue="JUnit.StringUtilitiesTest.generateRandomValidMix" />
       <item itemvalue="JUnit.StringUtilitiesTest.isValidMix" />
@@ -287,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603407127373</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="e4 terminado, instancias de clases movidas dentro del constructor.">
+      <created>1603418001895</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1603418001895</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -312,7 +341,8 @@
     <MESSAGE value="e4 creado, pendiente de hacerlo." />
     <MESSAGE value="e4 avanzando." />
     <MESSAGE value="e4 terminado." />
-    <option name="LAST_COMMIT_MESSAGE" value="e4 terminado." />
+    <MESSAGE value="e4 terminado, instancias de clases movidas dentro del constructor." />
+    <option name="LAST_COMMIT_MESSAGE" value="e4 terminado, instancias de clases movidas dentro del constructor." />
   </component>
   <component name="WindowStateProjectService">
     <state x="697" y="378" width="588" height="357" key="#Notifications" timestamp="1602665532715">
@@ -323,14 +353,14 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="591" y="197" width="800" height="719" key="#Plugins/72.27.1848.1053@72.27.1848.1053" timestamp="1603270721560" />
-    <state x="385" y="27" width="1084" height="1053" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603394549180">
+    <state x="385" y="27" width="1084" height="1053" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603472243119">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="385" y="27" width="1084" height="1053" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603394549180" />
-    <state x="172" y="127" width="1648" height="853" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1603271525960">
+    <state x="385" y="27" width="1084" height="1053" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603472243119" />
+    <state x="172" y="127" width="1648" height="853" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1603485155021">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="172" y="127" width="1648" height="853" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603271525960" />
+    <state x="172" y="127" width="1648" height="853" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603485155021" />
     <state x="804" y="261" width="374" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1603299896774">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -355,50 +385,54 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="713" y="231" width="556" height="652" key="Github.UntrackedFilesDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1602665931434" />
-    <state width="1802" height="286" key="GridCell.Tab.0.bottom" timestamp="1603417957942">
+    <state width="1802" height="273" key="GridCell.Tab.0.bottom" timestamp="1603488957332">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="286" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603417957942" />
-    <state width="1802" height="286" key="GridCell.Tab.0.center" timestamp="1603417957941">
+    <state width="1802" height="273" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603488957332" />
+    <state width="1802" height="273" key="GridCell.Tab.0.center" timestamp="1603488957332">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="286" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603417957941" />
-    <state width="1802" height="286" key="GridCell.Tab.0.left" timestamp="1603417957941">
+    <state width="1802" height="273" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603488957332" />
+    <state width="1802" height="273" key="GridCell.Tab.0.left" timestamp="1603488957331">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="286" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603417957941" />
-    <state width="1802" height="286" key="GridCell.Tab.0.right" timestamp="1603417957941">
+    <state width="1802" height="273" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603488957331" />
+    <state width="1802" height="273" key="GridCell.Tab.0.right" timestamp="1603488957332">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="286" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603417957941" />
-    <state width="1802" height="382" key="GridCell.Tab.1.bottom" timestamp="1603407590971">
+    <state width="1802" height="273" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603488957332" />
+    <state width="1802" height="280" key="GridCell.Tab.1.bottom" timestamp="1603488705558">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="382" key="GridCell.Tab.1.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603407590971" />
-    <state width="1802" height="382" key="GridCell.Tab.1.center" timestamp="1603407590970">
+    <state width="1802" height="280" key="GridCell.Tab.1.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1603488705558" />
+    <state width="1802" height="280" key="GridCell.Tab.1.center" timestamp="1603488705558">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="382" key="GridCell.Tab.1.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603407590970" />
-    <state width="1802" height="382" key="GridCell.Tab.1.left" timestamp="1603407590970">
+    <state width="1802" height="280" key="GridCell.Tab.1.center/72.27.1848.1053@72.27.1848.1053" timestamp="1603488705558" />
+    <state width="1802" height="280" key="GridCell.Tab.1.left" timestamp="1603488705558">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="382" key="GridCell.Tab.1.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603407590970" />
-    <state width="1802" height="382" key="GridCell.Tab.1.right" timestamp="1603407590971">
+    <state width="1802" height="280" key="GridCell.Tab.1.left/72.27.1848.1053@72.27.1848.1053" timestamp="1603488705558" />
+    <state width="1802" height="280" key="GridCell.Tab.1.right" timestamp="1603488705558">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="382" key="GridCell.Tab.1.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603407590971" />
+    <state width="1802" height="280" key="GridCell.Tab.1.right/72.27.1848.1053@72.27.1848.1053" timestamp="1603488705558" />
     <state x="485" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1603273363897">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1603273363897" />
-    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603407130071">
+    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603418004286">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1603407130071" />
+    <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1603418004286" />
     <state x="668" y="450" width="646" height="236" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1602617477577">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="668" y="450" width="646" height="236" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/72.27.1848.1053@72.27.1848.1053" timestamp="1602617477577" />
+    <state x="524" y="218" width="934" height="677" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603472600670">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="524" y="218" width="934" height="677" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1603472600670" />
     <state x="777" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602665399884">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -423,10 +457,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="828" y="311" width="325" height="492" key="refactoring.ChangeSignatureDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603300366295" />
-    <state x="660" y="252" key="run.anything.popup" timestamp="1603388012563">
+    <state x="660" y="252" key="run.anything.popup" timestamp="1603487707223">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="660" y="252" key="run.anything.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1603388012563" />
+    <state x="660" y="252" key="run.anything.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1603487707223" />
     <state x="659" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1603403369270">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
