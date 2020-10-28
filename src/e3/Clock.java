@@ -130,6 +130,11 @@ public class Clock {
 
     @Override
     public int hashCode () {
-        return (this.minutes + this.seconds + this.hours)*31 + this.period.hashCode();
+        int result = this.hours;
+        result = 31*this.hours + this.minutes;
+        result = 31*result + this.seconds;
+        result = 31*result + this.period.hashCode();
+
+        return result;
     }
 }
