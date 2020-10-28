@@ -151,8 +151,11 @@ class ClockTest {
         Clock c1 = new Clock(17, 30, 30);
         Clock c2 = new Clock( 5, 30, 30, Clock.Period.PM);
         Clock c3 = new Clock( 5 ,30, 30, Clock.Period.AM);
+        Clock c4 = new Clock( 12, 0, 0, Clock.Period.PM);
+        Clock c5 = new Clock( 11 ,1, 0, Clock.Period.PM);
 
         assertEquals(c2.hashCode(), c1.hashCode());
         assertTrue(c1.hashCode() != c3.hashCode());
+        assertTrue(c4.hashCode() != c5.hashCode()); //falla
     }
 }

@@ -63,11 +63,23 @@ class CodeTest {
                 {'4', 'f', '6'},
                 {'7', '8', '1'}};
 
+        char[][] noRectangular
+                = {{'1', '2', '3'},
+                {'4', '5', '6'},
+                {'7', '8', '9','0'}};
+
+        char[][] noRectangular2
+                = {{'1', '2', '3'},
+                {'4', '5', '6','7'},
+                {'8', '9', '0'}};
+
         assertFalse(Code.isKeypadValid(wrongDuplicates));
         assertFalse(Code.isKeypadValid(wrongNotSequence));
         assertFalse(Code.isKeypadValid(wrongNull));
         assertFalse(Code.isKeypadValid(wrongNoValidChar));
         assertFalse(Code.isKeypadValid(null));
+        assertFalse(Code.isKeypadValid(noRectangular));
+        assertFalse(Code.isKeypadValid(noRectangular2));
 
         assertTrue(Code.isKeypadValid(keypad1));
         assertTrue(Code.isKeypadValid(keypad2));
