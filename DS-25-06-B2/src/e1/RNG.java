@@ -1,7 +1,7 @@
 package e1;
 import java.util.Random;
 
-public class RNG {
+class RNG {
     private static Random rand;
 
     RNG() { //creación de la semilla aleatoria para el RNG
@@ -12,7 +12,7 @@ public class RNG {
         rand = new Random(seed);
     }
 
-    public static int Roll(int max) {
+    protected static int Roll(int max) {
         return rand.nextInt(max);
     }
 }
