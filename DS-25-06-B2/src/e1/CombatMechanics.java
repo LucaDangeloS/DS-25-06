@@ -1,7 +1,24 @@
 package e1;
 
 import static java.lang.Math.min;
-public class CombatMechanics {
+
+class Modifiers {
+    public int H_ATK = 0; //H de Heroes
+    public double H_RES = 1;
+    public int B_ATK = 0; //B de Bestias
+    public double B_RES = 1;
+}
+
+class RaceEffects {
+    public Modifiers applyRaceEffects(Personajes attacking, Personajes defending) {
+        var mod = new Modifiers();
+
+
+        return mod;
+    }
+}
+
+public class CombatMechanics extends RaceEffects {
 
     public boolean BattleContinues(Ejercito<Heroes> H, Ejercito<Bestias> B) {
         return min(H.length(),B.length()) > 0;
@@ -13,21 +30,21 @@ public class CombatMechanics {
         else return "Empate!!!";
     }
 
-    private void applyRaceEffects(Heroes H, Bestias B) {
-
-    }
-
     public String battle(Ejercito<Heroes> H, Ejercito<Bestias> B) {
         StringBuilder sb = new StringBuilder();
-        int n_combat = min(H.length(),B.length());
+        var mod = new Modifiers();
+        int n_combat=min(H.length(), B.length()), i;
+
         //bucle de tirada de dados y efectos de razas
-        /*
-            0 -> n_combat
-            tiran dados
-            aplican debufos
-            {resuelve la vida / resetATK
-            {si muere mueve tropas (delete)
-         */
+        for (i = 0; i < n_combat; i++) {
+            H.DiceRoll(i);
+            B.DiceRoll(i);
+
+            mod = applyRaceEffects(H.get(i), B.get(i));
+            sb.append(H.fight(B, i, mod));
+        } //bucle de control de batallas en cada turno
+        H.reset(); //se quitan las tropas muertas al final del turno para no
+        B.reset();  //modificar los Ejercitos durante los siguiente combates del turno
         return sb.toString();
     }
 }

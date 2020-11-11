@@ -2,17 +2,43 @@ package e1;
 
 import java.util.ArrayList;
 import static java.lang.Math.max;
+import static java.lang.StrictMath.round;
 
 public class Ejercito<E extends Personajes> {
-    private final ArrayList<E> fila =  new ArrayList<>();
+    private final ArrayList<E> fila = new ArrayList<>();
 
-
+    //Modificadoras
     public void add(E unit) {
         if (!fila.contains(unit)) fila.add(unit);
     }
-
-    public void remove(int index) {
+    private void remove(int index) {
         fila.remove(index);
+    }
+    public String fight(Ejercito<? extends Personajes> E, int i, Modifiers mod) {
+        var sb = new StringBuilder();
+        Personajes enemy = E.get(i);
+        Personajes ally = this.get(i);
+
+        sb.append("\tLucha entre "+ally.toString()+" y "+enemy.toString()+"\n");
+
+        ally.attack(enemy, mod);
+        enemy.attack(ally, mod);
+
+        if (enemy.getHP() < 0) sb.append("\t"+enemy.name+" "+enemy.getRaza()+" se muere!\n");
+        if (ally.getHP() < 0) sb.append("\t"+ally.name+" "+ally.getRaza()+" se muere!\n");
+
+        return sb.toString();
+    }
+    public void reset() {
+        Personajes p;
+        for (int i = fila.size()-1; i>=0; i--) { //se borran del final al principio para que los index
+                                                // de las anteriores posiciones no varien al reccorrer el ArrayList
+            p = this.get(i);
+            if (this.length() > 0) {
+                if (p.getATK() != 0) p.resetATK();
+                if (p.getHP() <= 0) remove(i);
+            }
+        }
     }
 
     //Getters
@@ -21,9 +47,8 @@ public class Ejercito<E extends Personajes> {
         else return "nada";
     }
     public int length() {
-        return this.length();
+        return fila.size();
     }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -34,90 +59,17 @@ public class Ejercito<E extends Personajes> {
         }
         return sb.toString();
     }
+    public E get(int index) {
+        return fila.get(index);
+    }
+
+    //Roll Dice y comparativa
+    public void DiceRoll(int index) {
+        this.get(index).DiceRoll();
+    }
 
     public Ejercito<? extends Personajes> hasMore(Ejercito<? extends Personajes> O) {
         if (O.length() > this.length()) return O;
         else return this;
-    }
-}
-
-//Personajes
-abstract class Personajes {
-    private int HP;
-    private int RES;
-    private int ATK;
-    public final String name; //la hago public porque va a ser final cuando se cree el personaje
-
-    Personajes (String name, int HP, int RES) {
-        this.name = name;
-        this.HP = HP;
-        this.RES = RES;
-        this.ATK = 0;
-    }
-
-    public void resetATK() {this.ATK = 0; }
-
-    public int getHP() { return this.HP; }
-    public int getRES() { return this.RES; }
-    public int getATK() { return this.ATK; }
-
-    abstract String getRaza();
-    abstract String getFaction();
-    abstract int DiceRoll();
-}
-
-//Heroes
-class Heroes extends Personajes {
-    private final RAZAS raza;
-    private int ATK;
-    private final int max_roll = 91;
-
-    public enum RAZAS {
-        Elfo,
-        Hobbit,
-        Humano
-    }
-
-    //Constructor
-    Heroes(String name, int HP, int RES, RAZAS raza) {
-        super(name, HP, RES);
-        this.raza = raza;
-    }
-
-    //Getters
-    public String getRaza(){ return this.raza.toString(); }
-    public String getFaction() { return "Heroes"; }
-
-
-    int DiceRoll() {
-        this.ATK = max(RNG.Roll(max_roll),RNG.Roll(max_roll));
-        return this.ATK;
-    }
-}
-
-//Bestias
-class Bestias extends Personajes {
-    private final RAZAS raza;
-    private int ATK;
-    private final int max_roll = 101;
-
-    public enum RAZAS {
-        Orco,
-        Trasgo
-    }
-
-    //Constructor
-    Bestias(String name, int HP, int RES, RAZAS raza) {
-        super(name, HP, RES);
-        this.raza = raza;
-    }
-
-    //Getters
-    public String getRaza(){ return this.raza.toString(); }
-    public String getFaction() { return "Bestias"; }
-
-    int DiceRoll() {
-        this.ATK = RNG.Roll(max_roll);
-        return this.ATK;
     }
 }

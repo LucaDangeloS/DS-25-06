@@ -6,9 +6,14 @@ import java.util.function.DoubleToIntFunction;
 import static java.lang.Math.min;
 
 public class Game {
-    private final Ejercito<Heroes> HeroArmy = new Ejercito<>();
-    private final Ejercito<Bestias> BeastArmy = new Ejercito<>();
+    private final Ejercito<Heroes> HeroArmy;
+    private final Ejercito<Bestias> BeastArmy;
     private final CombatMechanics cm = new CombatMechanics();
+
+    Game(Ejercito<Heroes> EH, Ejercito<Bestias> EB) {
+        HeroArmy = EH;
+        BeastArmy = EB;
+    }
 
     public String[] batalla() {
         StringBuilder sb = new StringBuilder();
@@ -23,34 +28,42 @@ public class Game {
             output[i-1] = sb.toString();
             i++;
         }
-        output[i] = cm.declareWinner(HeroArmy, BeastArmy);
+        output[i-1] = cm.declareWinner(HeroArmy, BeastArmy);
 
         return output;
     }
+
+
 
     public static void pl (Object o) {
         System.out.println(o.toString());
     }
 
     public static void main(String[] args) {
-        Heroes bs = new Heroes("pene1", 10, 10, Heroes.RAZAS.Humano);
-        Bestias cs = new Bestias("pene1", 10, 10, Bestias.RAZAS.Orco);
-        Heroes bs2 = new Heroes("pene2", 10, 10, Heroes.RAZAS.Humano);
-        Bestias cs2 = new Bestias("pene2", 10, 10, Bestias.RAZAS.Orco);
+        Heroes bs = new Heroes("pene1", 60, 10, Heroes.RAZAS.Humano);
+        Bestias cs = new Bestias("pene1", 60, 10, Bestias.RAZAS.Orco);
+        Heroes bs2 = new Heroes("pene2", 60, 10, Heroes.RAZAS.Humano);
+        Bestias cs2 = new Bestias("pene2", 60, 10, Bestias.RAZAS.Orco);
+        Heroes bs3 = new Heroes("pene3", 60, 10, Heroes.RAZAS.Humano);
+        Bestias cs3 = new Bestias("pene3", 60, 10, Bestias.RAZAS.Orco);
 
-        new RNG(5);
+        new RNG();
 
         Ejercito<Heroes> EjHeroes = new Ejercito<>();
         Ejercito<Bestias> EjBestias = new Ejercito<>();
+
+        var game = new Game(EjHeroes, EjBestias);
 
         EjHeroes.add(bs);
         EjHeroes.add(bs2);
         EjBestias.add(cs);
         EjBestias.add(cs2);
+        EjHeroes.add(bs3);
+        EjBestias.add(cs3);
 
-        pl(EjHeroes.toString());
-        pl(EjBestias.toString());
-
+        for (String s: game.batalla()) {
+            if (s != null) pl(s);
+        }
     }
 
 }
