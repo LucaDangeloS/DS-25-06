@@ -92,7 +92,8 @@ class Bestias extends Personajes {
     //Modificadoras
     @Override
     public void attack(Personajes P, Modifiers mod) {
-        P.calcDMG(this.ATK+mod.B_ATK - P.getRES()*mod.H_RES);
+        if (this.getHP() > 0)
+            P.calcDMG(this.ATK+mod.B_ATK - P.getRES()*mod.H_RES);
     }
 
     //Getters

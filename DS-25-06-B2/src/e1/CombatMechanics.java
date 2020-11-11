@@ -12,8 +12,9 @@ class Modifiers {
 class RaceEffects {
     public Modifiers applyRaceEffects(Personajes attacking, Personajes defending) {
         var mod = new Modifiers();
-
-
+//        if (attacking.getRaza() == (RAZAS.Elfo) && defending.getRaza() == (RAZAS.Orco)) {
+//
+//        }
         return mod;
     }
 }

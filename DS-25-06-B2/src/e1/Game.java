@@ -18,17 +18,17 @@ public class Game {
     public String[] batalla() {
         StringBuilder sb = new StringBuilder();
         String[] output = new String[100]; //máximo de 100 enfrentamientos
-        int i=1;
+        int i=0;
 
         while (cm.BattleContinues(HeroArmy, BeastArmy)) {
             sb.delete(0,sb.length()); //reset StringBuilder from last turn
-            sb.append("Turn "+i+"\n");
+            sb.append("Turn "+(i+1)+"\n");
             sb.append(cm.battle(HeroArmy, BeastArmy));
 
-            output[i-1] = sb.toString();
+            output[i] = sb.toString();
             i++;
         }
-        output[i-1] = cm.declareWinner(HeroArmy, BeastArmy);
+        output[i] = cm.declareWinner(HeroArmy, BeastArmy);
 
         return output;
     }
