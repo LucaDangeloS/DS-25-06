@@ -10,11 +10,15 @@ class Modifiers {
 }
 
 class RaceEffects {
-    public Modifiers applyRaceEffects(Personajes attacking, Personajes defending) {
+    public Modifiers applyRaceEffects(Heroes H, Bestias B) {
         var mod = new Modifiers();
-//        if (attacking.getRaza() == (RAZAS.Elfo) && defending.getRaza() == (RAZAS.Orco)) {
-//
-//        }
+        if (B.getRaza() == (Razas_Bestias.Orco)) mod.H_RES = 0.9;
+
+        if (H.getRaza() == (Razas_Heroes.Elfo) && B.getRaza() == (Razas_Bestias.Orco)) {
+            mod.H_ATK = 10;
+        } else if (H.getRaza() == (Razas_Heroes.Hobbit) && B.getRaza() == (Razas_Bestias.Trasgo)) {
+            mod.H_ATK = -5;
+        }
         return mod;
     }
 }
@@ -40,7 +44,7 @@ public class CombatMechanics extends RaceEffects {
         for (i = 0; i < n_combat; i++) {
             H.DiceRoll(i);
             B.DiceRoll(i);
-
+            System.out.println("Heroe: "+H.get(i).getATK()+" Bestia: "+B.get(i).getATK());
             mod = applyRaceEffects(H.get(i), B.get(i));
             sb.append(H.fight(B, i, mod));
         } //bucle de control de batallas en cada turno

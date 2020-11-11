@@ -31,7 +31,7 @@ abstract class Personajes {
         return this.name+" (HP: "+this.getHP()+")";
     }
 
-    abstract String getRaza();
+    abstract Razas getRaza();
     abstract String getFaction();
 
     abstract int DiceRoll();
@@ -39,18 +39,12 @@ abstract class Personajes {
 
 //Heroes
 class Heroes extends Personajes {
-    private final RAZAS raza;
+    private final Razas raza;
     private int ATK;
     private final int max_roll = 91;
 
-    public enum RAZAS {
-        Elfo,
-        Hobbit,
-        Humano
-    }
-
     //Constructor
-    Heroes(String name, int HP, int RES, RAZAS raza) {
+    Heroes(String name, int HP, int RES, Razas_Heroes raza) {
         super(name, HP, RES);
         this.raza = raza;
     }
@@ -62,7 +56,7 @@ class Heroes extends Personajes {
     }
 
     //Getters
-    public String getRaza(){ return this.raza.toString(); }
+    public Razas getRaza(){ return this.raza; }
     public String getFaction() { return "Heroes"; }
     public int getATK() { return this.ATK; }
 
@@ -74,17 +68,12 @@ class Heroes extends Personajes {
 
 //Bestias
 class Bestias extends Personajes {
-    private final RAZAS raza;
+    private final Razas raza;
     private int ATK;
     private final int max_roll = 101;
 
-    public enum RAZAS {
-        Orco,
-        Trasgo
-    }
-
     //Constructor
-    Bestias(String name, int HP, int RES, RAZAS raza) {
+    Bestias(String name, int HP, int RES, Razas_Bestias raza) {
         super(name, HP, RES);
         this.raza = raza;
     }
@@ -97,7 +86,7 @@ class Bestias extends Personajes {
     }
 
     //Getters
-    public String getRaza(){ return this.raza.toString(); }
+    public Razas getRaza(){ return this.raza; }
     public String getFaction() { return "Bestias"; }
     public int getATK() { return this.ATK; }
 

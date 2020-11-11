@@ -16,38 +16,32 @@ public class Game {
     }
 
     public String[] batalla() {
+        int i=0, max=100;
         StringBuilder sb = new StringBuilder();
-        String[] output = new String[100]; //máximo de 100 enfrentamientos
-        int i=0;
+        String[] output = new String[max]; //máximo de 100 enfrentamientos
 
-        while (cm.BattleContinues(HeroArmy, BeastArmy)) {
+        while (cm.BattleContinues(HeroArmy, BeastArmy) && i < max) {
             sb.delete(0,sb.length()); //reset StringBuilder from last turn
             sb.append("Turn "+(i+1)+"\n");
             sb.append(cm.battle(HeroArmy, BeastArmy));
-
             output[i] = sb.toString();
             i++;
         }
-        output[i] = cm.declareWinner(HeroArmy, BeastArmy);
+        if (i == max) output[i-1] = "La batalla está durando demasiado...\n"+cm.declareWinner(HeroArmy, BeastArmy);
+        else output[i] = cm.declareWinner(HeroArmy, BeastArmy);
 
         return output;
     }
 
-
-
-    public static void pl (Object o) {
-        System.out.println(o.toString());
-    }
-
     public static void main(String[] args) {
-        Heroes bs = new Heroes("pene1", 60, 10, Heroes.RAZAS.Humano);
-        Bestias cs = new Bestias("pene1", 60, 10, Bestias.RAZAS.Orco);
-        Heroes bs2 = new Heroes("pene2", 60, 10, Heroes.RAZAS.Humano);
-        Bestias cs2 = new Bestias("pene2", 60, 10, Bestias.RAZAS.Orco);
-        Heroes bs3 = new Heroes("pene3", 60, 10, Heroes.RAZAS.Humano);
-        Bestias cs3 = new Bestias("pene3", 60, 10, Bestias.RAZAS.Orco);
+        Bestias cs = new Bestias("Magh'ul", 60, 47, Razas_Bestias.Orco);
+        Bestias cs2 = new Bestias("Ushulum", 50, 35, Razas_Bestias.Orco);
+        Bestias cs3 = new Bestias("Uruk-hai", 70, 45, Razas_Bestias.Trasgo);
+        Heroes bs = new Heroes("Gandalf", 45, 33, Razas_Heroes.Humano);
+        Heroes bs2 = new Heroes("Legolas", 32, 15, Razas_Heroes.Elfo);
+        Heroes bs3 = new Heroes("Frodo", 20, 10, Razas_Heroes.Hobbit);
 
-        new RNG();
+        new RNG(5);
 
         Ejercito<Heroes> EjHeroes = new Ejercito<>();
         Ejercito<Bestias> EjBestias = new Ejercito<>();
@@ -62,7 +56,7 @@ public class Game {
         EjBestias.add(cs3);
 
         for (String s: game.batalla()) {
-            if (s != null) pl(s);
+            if (s != null) System.out.println(s);
         }
     }
 
