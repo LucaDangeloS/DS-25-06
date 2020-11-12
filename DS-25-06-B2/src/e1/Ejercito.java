@@ -29,6 +29,9 @@ public class Ejercito<E extends Personajes> {
 
         return sb.toString();
     }
+    public void clear() {
+        fila.clear();
+    }
     public void reset() {
         Personajes p;
         for (int i = fila.size()-1; i>=0; i--) { //se borran del final al principio para que los index
@@ -48,6 +51,10 @@ public class Ejercito<E extends Personajes> {
     }
     public int length() {
         return fila.size();
+    }
+    public boolean isEmpty() {
+        if (fila.isEmpty()) return true;
+        else return false;
     }
     @Override
     public String toString() {

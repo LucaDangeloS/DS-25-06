@@ -1,7 +1,6 @@
 package e1;
 
-import java.util.Scanner;
-import java.util.function.DoubleToIntFunction;
+import java.util.Arrays;
 
 import static java.lang.Math.min;
 
@@ -9,6 +8,7 @@ public class Game {
     private final Ejercito<Heroes> HeroArmy;
     private final Ejercito<Bestias> BeastArmy;
     private final CombatMechanics cm = new CombatMechanics();
+    private String[] log;
 
     Game(Ejercito<Heroes> EH, Ejercito<Bestias> EB) {
         HeroArmy = EH;
@@ -29,35 +29,16 @@ public class Game {
         }
         if (i == max) output[i-1] = "La batalla está durando demasiado...\n"+cm.declareWinner(HeroArmy, BeastArmy);
         else output[i] = cm.declareWinner(HeroArmy, BeastArmy);
-
+        log = output;
         return output;
     }
 
-    public static void main(String[] args) {
-        Bestias cs = new Bestias("Magh'ul", 60, 47, Razas_Bestias.Orco);
-        Bestias cs2 = new Bestias("Ushulum", 50, 35, Razas_Bestias.Orco);
-        Bestias cs3 = new Bestias("Uruk-hai", 70, 45, Razas_Bestias.Trasgo);
-        Heroes bs = new Heroes("Gandalf", 45, 33, Razas_Heroes.Humano);
-        Heroes bs2 = new Heroes("Legolas", 32, 15, Razas_Heroes.Elfo);
-        Heroes bs3 = new Heroes("Frodo", 20, 10, Razas_Heroes.Hobbit);
-
-        new RNG(5);
-
-        Ejercito<Heroes> EjHeroes = new Ejercito<>();
-        Ejercito<Bestias> EjBestias = new Ejercito<>();
-
-        var game = new Game(EjHeroes, EjBestias);
-
-        EjHeroes.add(bs);
-        EjHeroes.add(bs2);
-        EjBestias.add(cs);
-        EjBestias.add(cs2);
-        EjHeroes.add(bs3);
-        EjBestias.add(cs3);
-
-        for (String s: game.batalla()) {
-            if (s != null) System.out.println(s);
+    @Override
+    public String toString() {
+        var output = new StringBuilder();
+        for (String s : log) {
+            if (s != null) output.append(s);
         }
+        return output.toString();
     }
-
 }

@@ -44,7 +44,7 @@ public class CombatMechanics extends RaceEffects {
         for (i = 0; i < n_combat; i++) {
             H.DiceRoll(i);
             B.DiceRoll(i);
-            System.out.println("Heroe: "+H.get(i).getATK()+" Bestia: "+B.get(i).getATK());
+
             mod = applyRaceEffects(H.get(i), B.get(i));
             sb.append(H.fight(B, i, mod));
         } //bucle de control de batallas en cada turno
