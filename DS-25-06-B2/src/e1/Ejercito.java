@@ -1,8 +1,6 @@
 package e1;
 
 import java.util.ArrayList;
-import static java.lang.Math.max;
-import static java.lang.StrictMath.round;
 
 public class Ejercito<E extends Personajes> {
     private final ArrayList<E> fila = new ArrayList<>();

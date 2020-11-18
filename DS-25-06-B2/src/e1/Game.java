@@ -1,9 +1,5 @@
 package e1;
 
-import java.util.Arrays;
-
-import static java.lang.Math.min;
-
 public class Game {
     private final Ejercito<Heroes> HeroArmy;
     private final Ejercito<Bestias> BeastArmy;
