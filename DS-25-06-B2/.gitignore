@@ -1,3 +1,6 @@
 # Default ignored files
 /shelf/
 /.idea/workspace.xml
+/src/Behavior/
+/workspace.xml
+/out/
