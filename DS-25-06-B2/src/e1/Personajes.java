@@ -6,42 +6,41 @@ import static java.lang.StrictMath.round;
 //Personajes
 abstract class Personajes {
     private int HP;
-    private int ATK;
     private final int RES;
-    public final String name; //la hago public porque va a ser final cuando se cree el personaje
+    public final String name;
 
     Personajes (String name, int HP, int RES) {
         this.name = name;
         this.HP = HP;
         this.RES = RES;
-        this.ATK = 0;
     }
 
-    public void resetATK() {this.ATK = 0; }
+    public void resetATK() {
+    }
     protected void calcDMG(double damage) {
         this.HP -= round(damage < 0 ? 0 : damage);
     }
     abstract public void attack(Personajes P, Modifiers mod);
 
+    //getters
     public int getHP() { return this.HP; }
     public int getRES() { return this.RES; }
     abstract public int getATK();
+    abstract Razas getRaza();
+    abstract String getFaction();
+
+    abstract void DiceRoll();
+
     @Override
     public String toString() {
         return this.name+" (HP: "+this.getHP()+")";
     }
-
-    abstract Razas getRaza();
-    abstract String getFaction();
-
-    abstract int DiceRoll();
 }
 
 //Heroes
 class Heroes extends Personajes {
     private final Razas raza;
     private int ATK;
-    private final int max_roll = 91;
 
     //Constructor
     Heroes(String name, int HP, int RES, Razas_Heroes raza) {
@@ -60,9 +59,9 @@ class Heroes extends Personajes {
     public String getFaction() { return "Heroes"; }
     public int getATK() { return this.ATK; }
 
-    int DiceRoll() {
+    void DiceRoll() {
+        int max_roll = 91;
         this.ATK = max(RNG.Roll(max_roll),RNG.Roll(max_roll));
-        return this.ATK;
     }
 }
 
@@ -70,7 +69,6 @@ class Heroes extends Personajes {
 class Bestias extends Personajes {
     private final Razas raza;
     private int ATK;
-    private final int max_roll = 101;
 
     //Constructor
     Bestias(String name, int HP, int RES, Razas_Bestias raza) {
@@ -90,9 +88,9 @@ class Bestias extends Personajes {
     public String getFaction() { return "Bestias"; }
     public int getATK() { return this.ATK; }
 
-    int DiceRoll() {
+    void DiceRoll() {
+        int max_roll = 101;
         this.ATK = RNG.Roll(max_roll);
-        return this.ATK;
     }
 }
 

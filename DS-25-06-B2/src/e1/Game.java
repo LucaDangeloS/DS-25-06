@@ -18,14 +18,14 @@ public class Game {
     }
 
     public String[] batalla() {
-        int j=0, i=0, max=100, n_combat;
+        int j=0, i, max=100, n_combat;
         StringBuilder sb = new StringBuilder();
         String[] output = new String[max]; //máximo de 100 enfrentamientos
         var mod = new Modifiers();
 
         while (BattleContinues(HeroArmy, BeastArmy) && j < max) {
             sb.delete(0,sb.length()); //reset StringBuilder from last turn
-            sb.append("Turn "+(i+1)+"\n");
+            sb.append("Turn "+(j+1)+"\n");
             n_combat = min(HeroArmy.length(), BeastArmy.length());
 
             //bucle de tirada de dados y efectos de razas
