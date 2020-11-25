@@ -18,7 +18,7 @@ public class Game {
     }
 
     public String[] batalla() {
-        int j=0, i=0, max=100, n_combat=min(HeroArmy.length(), BeastArmy.length());;
+        int j=0, i=0, max=100, n_combat;
         StringBuilder sb = new StringBuilder();
         String[] output = new String[max]; //máximo de 100 enfrentamientos
         var mod = new Modifiers();
