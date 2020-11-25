@@ -51,8 +51,7 @@ public class Ejercito<E extends Personajes> {
         return army.size();
     }
     public boolean isEmpty() {
-        if (army.isEmpty()) return true;
-        else return false;
+        return army.isEmpty();
     }
     @Override
     public String toString() {
