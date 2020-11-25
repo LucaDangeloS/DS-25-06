@@ -12,9 +12,9 @@ class LordOfTheRingsTest {
     @Test
     public void BeastLegionCreation() {
         if (!EjBestias.isEmpty()) EjBestias.clear();
-        Bestias cs = new Bestias("Magh'ul", 60, 47, Razas_Bestias.Orco);
-        Bestias cs2 = new Bestias("Ushulum", 50, 35, Razas_Bestias.Orco);
-        Bestias cs3 = new Bestias("Uruk-hai", 70, 45, Razas_Bestias.Trasgo);
+        Bestias cs = new Orco("Magh'ul", 60, 47);
+        Bestias cs2 = new Orco("Ushulum", 50, 35);
+        Bestias cs3 = new Trasgo("Uruk-hai", 70, 45);
 
         EjBestias.add(cs);
         EjBestias.add(cs2);
@@ -28,9 +28,9 @@ class LordOfTheRingsTest {
     @Test
     public void HeroesArmyCreation() {
         if (!EjHeroes.isEmpty()) EjHeroes.clear();
-        Heroes bs = new Heroes("Gandalf", 45, 33, Razas_Heroes.Humano);
-        Heroes bs2 = new Heroes("Legolas", 38, 15, Razas_Heroes.Elfo);
-        Heroes bs3 = new Heroes("Frodo", 20, 10, Razas_Heroes.Hobbit);
+        Heroes bs = new Humano("Gandalf", 45, 33);
+        Heroes bs2 = new Elfo("Legolas", 38, 15);
+        Heroes bs3 = new Hobbit("Frodo", 20, 10);
 
         EjHeroes.add(bs);
         EjHeroes.add(bs2);
@@ -62,7 +62,9 @@ Turno 1 : StringBatalla[0]
     assertTrue(StringBatalla[0].contains("Uruk-hai (HP: 70)"));
     assertFalse(StringBatalla[1].contains("Uruk-hai")); //Uruk-hai no está en el turno 2
     assertTrue(StringBatalla[2].contains("Uruk-hai (HP: 52)"));
+
     /*
+    Tiradas:
 Turno 2 : StringBatalla[1]
     Heroe: 61 Bestia: 65
     Heroe: 88 Bestia: 79

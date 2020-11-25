@@ -12,18 +12,18 @@ public class Ejercito<E extends Personajes> {
     private void remove(int index) {
         army.remove(index);
     }
-    public String fight(Ejercito<? extends Personajes> E, int fila, Modifiers mod) {
+    public String fight(Ejercito<? extends Personajes> E, int fila) {
         var sb = new StringBuilder();
         Personajes enemy = E.get(fila);
         Personajes ally = this.get(fila);
 
         sb.append("\tLucha entre "+ally.toString()+" y "+enemy.toString()+"\n");
 
-        ally.attack(enemy, mod);
-        enemy.attack(ally, mod);
+        ally.attack(enemy);
+        enemy.attack(ally);
 
-        if (enemy.getHP() < 0) sb.append("\t"+enemy.name+" "+enemy.getRaza()+" se muere!\n");
-        if (ally.getHP() < 0) sb.append("\t"+ally.name+" "+ally.getRaza()+" se muere!\n");
+        if (enemy.getHP() < 0) sb.append("\t"+enemy.name+" "+enemy.getClass().getSimpleName()+" se muere!\n");
+        if (ally.getHP() < 0) sb.append("\t"+ally.name+" "+ally.getClass().getSimpleName()+" se muere!\n");
 
         return sb.toString();
     }
@@ -58,7 +58,7 @@ public class Ejercito<E extends Personajes> {
         StringBuilder sb = new StringBuilder();
         sb.append("Ejercito de "+this.getFaction()+"\n");
         for (E unit : army) {
-            sb.append("\t"+unit.name+" : "+unit.getRaza()+" (HP: "+unit.getHP()+") (RES: "+unit.getRES()+")");
+            sb.append("\t"+unit.name+" : "+unit.getClass().getSimpleName()+" (HP: "+unit.getHP()+") (RES: "+unit.getRES()+")");
             sb.append("\n");
         }
         return sb.toString();

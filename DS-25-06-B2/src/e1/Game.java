@@ -5,7 +5,6 @@ import static java.lang.Math.min;
 public class Game {
     private final Ejercito<Heroes> HeroArmy;
     private final Ejercito<Bestias> BeastArmy;
-    private final RaceEffects cm = new RaceEffects();
     private String[] log;
 
     Game(Ejercito<Heroes> EH, Ejercito<Bestias> EB) {
@@ -21,7 +20,6 @@ public class Game {
         int j=0, i, max=100, n_combat;
         StringBuilder sb = new StringBuilder();
         String[] output = new String[max]; //máximo de 100 enfrentamientos
-        var mod = new Modifiers();
 
         while (BattleContinues(HeroArmy, BeastArmy) && j < max) {
             sb.delete(0,sb.length()); //reset StringBuilder from last turn
@@ -33,8 +31,7 @@ public class Game {
                 HeroArmy.DiceRoll(i);
                 BeastArmy.DiceRoll(i);
 
-                mod = cm.applyRaceEffects(HeroArmy.get(i), BeastArmy.get(i));
-                sb.append(HeroArmy.fight(BeastArmy, i, mod));
+                sb.append(HeroArmy.fight(BeastArmy, i)); //para consistencia en los tests siempre tiene prioridad los héroes al atacar
             } //bucle de control de batallas en cada turno
 
             HeroArmy.reset(); //se quitan las tropas muertas al final del turno para no
