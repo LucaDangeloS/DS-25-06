@@ -3,19 +3,19 @@ package e1;
 import java.util.ArrayList;
 
 public class Ejercito<E extends Personajes> {
-    private final ArrayList<E> fila = new ArrayList<>();
+    private final ArrayList<E> army = new ArrayList<>();
 
     //Modificadoras
     public void add(E unit) {
-        if (!fila.contains(unit)) fila.add(unit);
+        if (!army.contains(unit)) army.add(unit);
     }
     private void remove(int index) {
-        fila.remove(index);
+        army.remove(index);
     }
-    public String fight(Ejercito<? extends Personajes> E, int i, Modifiers mod) {
+    public String fight(Ejercito<? extends Personajes> E, int fila, Modifiers mod) {
         var sb = new StringBuilder();
-        Personajes enemy = E.get(i);
-        Personajes ally = this.get(i);
+        Personajes enemy = E.get(fila);
+        Personajes ally = this.get(fila);
 
         sb.append("\tLucha entre "+ally.toString()+" y "+enemy.toString()+"\n");
 
@@ -28,11 +28,11 @@ public class Ejercito<E extends Personajes> {
         return sb.toString();
     }
     public void clear() {
-        fila.clear();
+        army.clear();
     }
     public void reset() {
         Personajes p;
-        for (int i = fila.size()-1; i>=0; i--) { //se borran del final al principio para que los index
+        for (int i = army.size()-1; i>=0; i--) { //se borran del final al principio para que los index
                                                 // de las anteriores posiciones no varien al reccorrer el ArrayList
             p = this.get(i);
             if (this.length() > 0) {
@@ -44,28 +44,28 @@ public class Ejercito<E extends Personajes> {
 
     //Getters
     public String getFaction() {
-        if (!fila.isEmpty()) return fila.get(0).getFaction();
+        if (!army.isEmpty()) return army.get(0).getFaction();
         else return "nada";
     }
     public int length() {
-        return fila.size();
+        return army.size();
     }
     public boolean isEmpty() {
-        if (fila.isEmpty()) return true;
+        if (army.isEmpty()) return true;
         else return false;
     }
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Ejercito de "+this.getFaction()+"\n");
-        for (E unit : fila) {
+        for (E unit : army) {
             sb.append("\t"+unit.name+" : "+unit.getRaza()+" (HP: "+unit.getHP()+") (RES: "+unit.getRES()+")");
             sb.append("\n");
         }
         return sb.toString();
     }
     public E get(int index) {
-        return fila.get(index);
+        return army.get(index);
     }
 
     //Roll Dice y comparativa

@@ -95,3 +95,4 @@ class Bestias extends Personajes {
         return this.ATK;
     }
 }
+
