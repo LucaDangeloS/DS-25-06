@@ -127,25 +127,7 @@ class Protective_Behavior implements Behavior { //Shoot and reload when safe, ot
     }
 }
 
-class Quick_Protect_Behavior1 implements Behavior { //Reload, Protect, Shoot, Reload...
-    GunslingerAction la;
-
-    @Override
-    public GunslingerAction action(Gunslinger g) {
-        int loads = g.getLoads();
-
-        if (loads == 0) return GunslingerAction.RELOAD;
-        else if (loads == 1 && la != GunslingerAction.PROTECT) {
-            la = GunslingerAction.PROTECT;
-            return GunslingerAction.PROTECT;
-        } else {
-            la = GunslingerAction.SHOOT;
-            return GunslingerAction.SHOOT;
-        }
-    }
-}
-
-class Quick_Protect_Behavior2 implements Behavior { //Reload, Shoot, Protect, Reload...
+class Quick_Protect_Behavior implements Behavior { //Reload, Shoot, Protect, Reload...
     GunslingerAction la = GunslingerAction.PROTECT;
 
     @Override
@@ -155,28 +137,6 @@ class Quick_Protect_Behavior2 implements Behavior { //Reload, Shoot, Protect, Re
         if (loads == 0 && la == GunslingerAction.PROTECT) return GunslingerAction.RELOAD;
         else if (la == GunslingerAction.SHOOT) {
             la = GunslingerAction.PROTECT;
-            return GunslingerAction.PROTECT;
-        } else {
-            la = GunslingerAction.SHOOT;
-            return GunslingerAction.SHOOT;
-        }
-    }
-}
-
-class Quick_Protect_Behavior3 implements Behavior { //Reload, Protect, Protect, Shoot, Reload...
-    GunslingerAction la = GunslingerAction.MACHINE_GUN;
-
-    @Override
-    public GunslingerAction action(Gunslinger g) {
-        int loads = g.getLoads();
-
-    if (loads == 0 && la == GunslingerAction.MACHINE_GUN) {
-        la = GunslingerAction.RELOAD;
-        return GunslingerAction.RELOAD;
-    }
-        else if (la == GunslingerAction.SHOOT || la == GunslingerAction.PROTECT) {
-            if (la == GunslingerAction.PROTECT) la = GunslingerAction.MACHINE_GUN;
-            else la = GunslingerAction.PROTECT;
             return GunslingerAction.PROTECT;
         } else {
             la = GunslingerAction.SHOOT;

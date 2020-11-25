@@ -55,37 +55,3 @@ public class Gunslinger {
         this.behavior = behavior;
     }
 }
-
-class G_Random extends Gunslinger {
-    G_Random() { this.setBehavior(new Random_Behavior()); }
-}
-
-class G_quicktrigger extends Gunslinger {
-    G_quicktrigger() {
-        this.setBehavior(new Quick_Behavior());
-    }
-}
-
-class G_protective extends Gunslinger {
-    G_protective() {
-        this.setBehavior(new Protective_Behavior());
-    }
-}
-
-class G_protect_behavior1 extends Gunslinger {
-    G_protect_behavior1() {
-        this.setBehavior(new Quick_Protect_Behavior1());
-    }
-}
-
-class G_protect_behavior2 extends Gunslinger {
-    G_protect_behavior2() {
-        this.setBehavior(new Quick_Protect_Behavior2());
-    }
-}
-
-class G_protect_behavior3 extends Gunslinger {
-    G_protect_behavior3() {
-        this.setBehavior(new Quick_Protect_Behavior3());
-    }
-}

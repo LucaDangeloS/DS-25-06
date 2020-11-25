@@ -1,15 +1,8 @@
 package e3;
 
 public class Gunfight {
-    private final Gunslinger G1;
-    private final Gunslinger G2;
 
-    Gunfight(Gunslinger G1, Gunslinger G2) {
-        this.G1 = G1;
-        this.G2 = G2;
-    }
-
-    public void duel() {
+    public void duel(Gunslinger G1, Gunslinger G2) {
         int turn = 1;
         GunslingerAction ga1;
         GunslingerAction ga2;

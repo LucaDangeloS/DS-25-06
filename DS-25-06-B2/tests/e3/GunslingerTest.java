@@ -11,16 +11,18 @@ class GunslingerTest {
     Gunslinger G2;
 
     @Test
-    void action_getLoads_rivalAction_getRivalLoads() {
-        G1 = new G_protective(); //Only reload and shoot when safe
-        G2 = new G_protect_behavior2(); //Reload, Shoot, Protect, Reload, Shoot, Protect...
+    void All_in_one_Gunslinger_test() {
+        G1 = new Gunslinger(); //Only reload and shoot when safe
+        G1.setBehavior(new Protective_Behavior());
+        G2 = new Gunslinger(); //Reload, Shoot, Protect, Reload, Shoot, Protect...
+        G2.setBehavior(new Quick_Protect_Behavior());
         List<GunslingerAction> g1_testArray = new ArrayList<>();
 
         //Always Reload Turn 1:
-        assertEquals("RELOAD", G1.action().toString()); //action test
+        assertEquals("RELOAD", G1.action().toString()); //action() test
         assertEquals("RELOAD", G2.action().toString());
 
-        G1.rivalAction(GunslingerAction.RELOAD); //rival action test
+        G1.rivalAction(GunslingerAction.RELOAD); //rivalAction() test
         G2.rivalAction(GunslingerAction.RELOAD);
 
         g1_testArray.add(GunslingerAction.RELOAD);
@@ -33,31 +35,31 @@ class GunslingerTest {
 
         g1_testArray.add(GunslingerAction.SHOOT);
 
-        assertEquals(1, G1.getLoads()); //getLoads test
+        assertEquals(1, G1.getLoads()); //getLoads() test
         assertEquals(0, G2.getLoads());
 
-        assertEquals(0, G1.getRivalLoads()); //getRivaLoads test
+        assertEquals(0, G1.getRivalLoads()); //getRivaLoads() test
         assertEquals(1, G2.getRivalLoads());
 
-        assertArrayEquals(g1_testArray.toArray(), G1.getRivalActions().toArray()); //getRivalactions test
-    }
+        assertArrayEquals(g1_testArray.toArray(), G1.getRivalActions().toArray()); //getRivalactions() test
 
-
-    @Test
-    void setBehavior() {
-        G1 = new Gunslinger();
+        // setBehavior() test
         G1.setBehavior(new Quick_Behavior()); //Reload, shoot, reload....
+        //G2 still has the same behavior: reload, shoot, protect...
+        assertEquals("SHOOT", G1.action().toString()); //G1 shoots
+        assertEquals("PROTECT", G2.action().toString()); //G1 Protects
 
-        G2 = new G_quicktrigger(); //Same behavior, but set with the method on a new Gunslinger instance.
+        G1.rivalAction(GunslingerAction.RELOAD);
+        G2.rivalAction(GunslingerAction.SHOOT);
 
-        assertEquals("RELOAD", G1.action().toString());
-        assertEquals("RELOAD", G2.action().toString());
+        assertEquals("RELOAD", G1.action().toString()); //G1 reloads
+        assertEquals("RELOAD", G2.action().toString()); //G2 Reloads
 
         G1.rivalAction(GunslingerAction.RELOAD);
         G2.rivalAction(GunslingerAction.RELOAD);
 
-        assertEquals("SHOOT", G1.action().toString());
-        assertEquals("SHOOT", G2.action().toString());
+        assertEquals("SHOOT", G1.action().toString()); //G1 shoots
+        assertEquals("SHOOT", G2.action().toString()); //G2 shoots
 
         //Draw!
     }
