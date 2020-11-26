@@ -7,15 +7,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GunslingerTest {
-    Gunslinger G1;
-    Gunslinger G2;
+    Gunslinger G1 = new Gunslinger();
+    Gunslinger G2 = new Gunslinger();
+    Gunfight gf = new Gunfight();
 
     @Test
     void All_in_one_Gunslinger_test() {
-        G1 = new Gunslinger(); //Only reload and shoot when safe
-        G1.setBehavior(new Protective_Behavior());
-        G2 = new Gunslinger(); //Reload, Shoot, Protect, Reload, Shoot, Protect...
-        G2.setBehavior(new Quick_Protect_Behavior());
+        G1.setBehavior(new Protective_Behavior()); //Only reload and shoot when safe
+        G2.setBehavior(new Quick_Protect_Behavior()); //Reload, Shoot, Protect, Reload, Shoot, Protect...
         List<GunslingerAction> g1_testArray = new ArrayList<>();
 
         //Always Reload Turn 1:
@@ -62,5 +61,23 @@ class GunslingerTest {
         assertEquals("SHOOT", G2.action().toString()); //G2 shoots
 
         //Draw!
+    }
+
+    @Test
+    void duel_test() {
+        System.out.println("Main Behavior VS Random Behavior");
+        G1.setBehavior(new Random_Behavior());
+        G2.setBehavior(new Main_Behavior());
+
+        gf.duel(G1, G2);
+    }
+
+    @Test
+    void duel_test2() {
+        System.out.println("Main Behavior VS Protective Behavior, leads to stalling");
+        G1.setBehavior(new Protective_Behavior());
+        G2.setBehavior(new Main_Behavior());
+
+        gf.duel(G1, G2);
     }
 }

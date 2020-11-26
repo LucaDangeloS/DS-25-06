@@ -37,7 +37,7 @@ abstract class Personajes {
 }
 
 //Heroes
-class Heroes extends Personajes {
+abstract class Heroes extends Personajes {
     private int ATK;
 
     //Constructor
@@ -61,7 +61,7 @@ class Heroes extends Personajes {
 }
 
 //Bestias
-class Bestias extends Personajes {
+abstract class Bestias extends Personajes {
     private int ATK;
 
     //Constructor
