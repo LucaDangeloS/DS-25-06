@@ -7,7 +7,7 @@ import static java.lang.StrictMath.round;
 abstract class Personajes {
     private int HP;
     private final int RES;
-    public final String name;
+    private final String name;
 
     Personajes (String name, int HP, int RES) {
         this.name = name;
@@ -25,6 +25,7 @@ abstract class Personajes {
     //getters
     public int getHP() { return this.HP; }
     public int getRES() { return this.RES; }
+    public String getName() {return this.name; }
     abstract public int getATK();
     abstract String getFaction();
 

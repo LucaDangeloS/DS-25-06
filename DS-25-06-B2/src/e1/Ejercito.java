@@ -22,8 +22,8 @@ public class Ejercito<E extends Personajes> {
         ally.attack(enemy);
         enemy.attack(ally);
 
-        if (enemy.getHP() < 0) sb.append("\t"+enemy.name+" "+enemy.getClass().getSimpleName()+" se muere!\n");
-        if (ally.getHP() < 0) sb.append("\t"+ally.name+" "+ally.getClass().getSimpleName()+" se muere!\n");
+        if (enemy.getHP() < 0) sb.append("\t"+enemy.getName()+" "+enemy.getClass().getSimpleName()+" se muere!\n");
+        if (ally.getHP() < 0) sb.append("\t"+ally.getName()+" "+ally.getClass().getSimpleName()+" se muere!\n");
 
         return sb.toString();
     }
@@ -58,7 +58,7 @@ public class Ejercito<E extends Personajes> {
         StringBuilder sb = new StringBuilder();
         sb.append("Ejercito de "+this.getFaction()+"\n");
         for (E unit : army) {
-            sb.append("\t"+unit.name+" : "+unit.getClass().getSimpleName()+" (HP: "+unit.getHP()+") (RES: "+unit.getRES()+")");
+            sb.append("\t"+unit.getName()+" : "+unit.getClass().getSimpleName()+" (HP: "+unit.getHP()+") (RES: "+unit.getRES()+")");
             sb.append("\n");
         }
         return sb.toString();
