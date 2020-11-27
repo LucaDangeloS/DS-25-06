@@ -8,7 +8,7 @@ public class Matrix implements Iterable<Integer> {
     private int rowNum, columnNum;
     public enum Iteration_mode {
         RowColumn,
-        ColumnRow;
+        ColumnRow
     }
     public enum copy_mode {
         Row,
@@ -32,8 +32,8 @@ public class Matrix implements Iterable<Integer> {
         int temp=0;
 
         if (matrix.length > 0) temp = matrix[0].length;
-        for (int i = 0; i < matrix.length; i++) {
-            if (matrix[i].length != temp) throw new IllegalArgumentException();
+        for (int[] ints : matrix) {
+            if (ints.length != temp) throw new IllegalArgumentException();
         }
 
         for (int i = 0; i< matrix.length; i++) {
@@ -69,8 +69,8 @@ public class Matrix implements Iterable<Integer> {
 
     public int[] copyMatrixUni(copy_mode mode, int index){
         Iterator<Integer> it;
-        ArrayList output = new ArrayList<Integer>();
-        int aux=0, boundaries=0;
+        ArrayList<Integer> output = new ArrayList<>();
+        int aux=0, boundaries;
 
         if (index <= 0) throw new IllegalArgumentException();
 
@@ -93,7 +93,7 @@ public class Matrix implements Iterable<Integer> {
             aux++;
         }
 
-        return output.stream().mapToInt(x -> (int) x).toArray();
+        return output.stream().mapToInt(x -> x).toArray();
     }
     //----------
     //Setters
@@ -158,8 +158,7 @@ public class Matrix implements Iterable<Integer> {
 
         @Override
         public boolean hasNext() {
-            if (inner_iterator.hasNext()) return true;
-            else return false;
+            return inner_iterator.hasNext();
         }
 
         @Override
@@ -187,8 +186,7 @@ public class Matrix implements Iterable<Integer> {
 
         @Override
         public boolean hasNext() {
-            if (inner_iterator.hasNext()) return true;
-            else return false;
+            return inner_iterator.hasNext();
         }
 
         @Override

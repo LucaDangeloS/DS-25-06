@@ -3,7 +3,6 @@ package e2;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
-import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,6 +45,8 @@ class MatrixTest {
                 M2.copyMatrixUni(Matrix.copy_mode.Row,2)), Arrays.toString(v2[1]));
         assertEquals( Arrays.toString(
                 M2.copyMatrixUni(Matrix.copy_mode.Column,1)), Arrays.toString(aux));
+        assertEquals( Arrays.toString(
+                M2.copyMatrixUni(Matrix.copy_mode.Column,2)), Arrays.toString(aux2));
 
         assertThrows(IllegalArgumentException.class,() -> M2.copyMatrixUni(Matrix.copy_mode.Column,3));
 
@@ -81,11 +82,15 @@ class MatrixTest {
 
         M1.setIterationMode(Matrix.Iteration_mode.ColumnRow);
         System.out.println("Iteracion por filas columnas:");
-        for (Iterator<Integer> m1 = M1.iterator(); m1.hasNext();) { System.out.print(m1.next()+" "); }
+        for (Integer value : M1) {
+            System.out.print(value + " ");
+        }
 
         M1.setIterationMode(Matrix.Iteration_mode.RowColumn);
         System.out.println("\nIteracion por columnas filas:");
-        for (Iterator<Integer> m1 = M1.iterator(); m1.hasNext();) { System.out.print(m1.next()+" "); }
+        for (Integer integer : M1) {
+            System.out.print(integer + " ");
+        }
 
         assertThrows(ArithmeticException.class, () -> MatrixAddition.add(M1,M3));
     }

@@ -5,8 +5,6 @@ import java.util.Iterator;
 public class MatrixAddition {
 
     public static Matrix add(Matrix M1, Matrix M2) {
-        Iterator<Integer> Rows;
-        Iterator<Integer> Columns;
         Matrix result;
         int column = 1, row=1, i, j;
 
