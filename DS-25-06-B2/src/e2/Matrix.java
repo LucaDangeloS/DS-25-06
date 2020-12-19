@@ -125,6 +125,7 @@ public class Matrix implements Iterable<Integer> {
         }
         return aux.toString();
     }
+    
 
     public int getCell(int row, int column){
         if ((row > rowNum || column > columnNum) || (row <= 0 || column <= 0)) throw new IllegalArgumentException();
