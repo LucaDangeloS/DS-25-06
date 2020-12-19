@@ -34,7 +34,7 @@ public class Program extends Observer implements Mode {
 
     @Override
     public void Program(Termostato t, float target_temperature) {
-        this.target_temperature = target_temperature;
+//        this.target_temperature = target_temperature; //temperature assignation already occurs on the previous state
     }
 
     @Override

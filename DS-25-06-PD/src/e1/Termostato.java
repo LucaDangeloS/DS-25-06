@@ -18,7 +18,7 @@ public final class Termostato extends Subject {
         this.op_mode = mode;
         updateObservers();
     }
-    //public setters
+    //public setter
     public void newTemperature(float currentTemperature) {
         this.current_temperature = currentTemperature;
         this.elapsedTime = this.elapsedTime+5;

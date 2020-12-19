@@ -1,0 +1,29 @@
+En el problema del termostato se utilizó el patrón de Estados y el patrón Observer.
+
+    El patron de estados permite delegar el comportamiento de un objeto que varía según
+el estado en el que se encuentre a subclases que representan estos estados.
+En este caso se utilizaron singletons como estados del Termostato.
+
+Dicho patron también permite cumplir el Principio de la Responsabilidad Única, al delegar
+la mayor parte del trabajo a otras clases que no sean el Termostato.
+Su uso se encuentra en la relación que tiene el Termostato con las clases de estado
+(Timer, Program, Off y Manual), que implementan un mismo interfaz el cual Termostato hace uso
+(Principio de la Inversión de la Dependencia), permitiendo así añadir facilmente nuevos estados
+en un futuro. Así las acciones dependen exclusivamente del estado en el que se encuentre Termostato.
+
+    Por otro lado también se utilizó el patrón Observador (u Observer), que consta de hacer que una
+clase Sujeto actualice constantemente a las clases Observer para detectar cambios y en el Sujeto
+y tomar acciones en base a esos cambios. En este ejercicio se hizo uso del modelo Pull del patrón porque
+permite una mayor modularidad.
+
+El patrón en cuestión se halla implementado en las clases Subject y Observer de las cuales extienden
+Termostato como sujeto para ser observado, y Timer, Program y Logger como observadores de Termostato.
+Se implementó este patrón porque Timer y Program dependían de cambios en la clase Termostato para que
+se actualizasen (la temperatura y el tiempo), y la clase Logger necesitaba cualquier información
+de cambio de estado de Termostato, por lo que se hace el trabajo de mantenerlos actualizados
+mucho más sencillo.
+
+
+TODO:   Diagrama de Clases para ambos patrones,
+        Diagrama de estados para patrón de estados,
+        Decidir diagrama dinámico para patrón observador

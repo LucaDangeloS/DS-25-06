@@ -22,7 +22,7 @@ public class Timer extends Observer implements Mode {
             Termostato t = (Termostato) s;
 
             if (t.getMode() == Timer.getInstance() &&
-                    target_time != 0 &&
+                    target_time > 0 &&
                     target_time <= t.getElapsedTime()) {
                 t.setMode(Off.getInstance());
                 t.TurnOff();
@@ -32,7 +32,7 @@ public class Timer extends Observer implements Mode {
 
     @Override
     public void Timer(Termostato t, int time) {
-        if (time != 0) {
+        if (time > 0) {
             target_time = t.getElapsedTime() + time;
             t.TurnOn();
         } else t.setMode(Off.getInstance());
