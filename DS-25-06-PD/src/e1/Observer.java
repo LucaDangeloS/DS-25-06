@@ -1,5 +1,5 @@
 package e1;
 
-public abstract class Observer {
+public interface Observer {
    public abstract void update(Subject s);
 }

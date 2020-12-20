@@ -26,4 +26,4 @@ mucho más sencillo.
 
 TODO:   Diagrama de Clases para ambos patrones,
         Diagrama de estados para patrón de estados,
-        Decidir diagrama dinámico para patrón observador
+        Diagrama de communicación para patrón Observer.

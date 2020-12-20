@@ -1,6 +1,6 @@
 package e1;
 
-public class Timer extends Observer implements Mode {
+public class Timer implements Mode, Observer {
     private static final Timer instance = new Timer();
     public static Timer getInstance() { return instance; }
     private Timer() { }

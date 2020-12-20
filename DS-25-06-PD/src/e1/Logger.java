@@ -3,7 +3,7 @@ package e1;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Logger extends Observer {
+public class Logger implements Observer {
     private final List<String> LogEvents = new ArrayList<String>();
     private Mode previousMode = Off.getInstance(); //el termostato siempre empieza en Off
     private float previousTemp;

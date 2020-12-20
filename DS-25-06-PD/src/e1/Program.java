@@ -1,6 +1,6 @@
 package e1;
 
-public class Program extends Observer implements Mode {
+public class Program implements Mode, Observer {
     private static final Program instance = new Program();
     public static Program getInstance() { return instance; }
     float target_temperature;
