@@ -22,8 +22,3 @@ Se implementó este patrón porque Timer y Program dependían de cambios en la c
 se actualizasen (la temperatura y el tiempo), y la clase Logger necesitaba cualquier información
 de cambio de estado de Termostato, por lo que se hace el trabajo de mantenerlos actualizados
 mucho más sencillo.
-
-
-TODO:   Diagrama de Clases para ambos patrones,
-        Diagrama de estados para patrón de estados,
-        Diagrama de communicación para patrón Observer.
